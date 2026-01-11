@@ -46,7 +46,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      apiBase: '/api'
+      apiBase: 'https://clb-back-production.up.railway.app/api/v1'
     }
   },
 
