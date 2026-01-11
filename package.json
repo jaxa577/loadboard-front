@@ -1,0 +1,35 @@
+{
+  "name": "sng-loadboard",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@headlessui/vue": "^1.7.16",
+    "@heroicons/vue": "^2.0.18",
+    "@nuxt/ui": "^2.22.3",
+    "@nuxtjs/color-mode": "^3.3.0",
+    "@nuxtjs/i18n": "^10.2.1",
+    "@nuxtjs/tailwindcss": "^6.14.0",
+    "@pinia/nuxt": "^0.5.1",
+    "nuxt": "^3.13.2",
+    "pinia": "^2.1.7",
+    "vite": "^7.3.0",
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.0",
+    "vue-toastification": "^2.0.0-rc.5"
+  },
+  "devDependencies": {
+    "@nuxt/typescript-build": "^3.0.2",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.3.5",
+    "typescript": "^5.4.5"
+  }
+}

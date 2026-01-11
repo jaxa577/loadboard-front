@@ -1,0 +1,103 @@
+import type { Load } from '~/types'
+
+const mockLoads: Load[] = [
+  {
+    id: '1',
+    shipperId: '2',
+    origin: { city: 'Москва', address: 'ул. Ленина, 1' },
+    destination: { city: 'Санкт-Петербург', address: 'пр. Невский, 100' },
+    weight: 5000,
+    volume: 20,
+    cargoType: 'Мебель',
+    price: 50000,
+    currency: 'RUB',
+    distance: 635,
+    urgent: false,
+    status: 'active',
+    description: 'Перевозка мебели из Москвы в Санкт-Петербург',
+    createdAt: '2024-01-15T10:00:00Z',
+    pickupDate: '2024-01-20',
+  },
+  {
+    id: '2',
+    shipperId: '2',
+    origin: { city: 'Казань', address: 'ул. Баумана, 50' },
+    destination: { city: 'Екатеринбург', address: 'ул. Ленина, 25' },
+    weight: 10000,
+    cargoType: 'Стройматериалы',
+    price: 80000,
+    currency: 'RUB',
+    distance: 800,
+    urgent: true,
+    status: 'active',
+    description: 'Срочная перевозка стройматериалов',
+    createdAt: '2024-01-16T08:00:00Z',
+    pickupDate: '2024-01-18',
+  },
+  {
+    id: '3',
+    shipperId: '2',
+    brokerId: '3',
+    driverId: '1',
+    origin: { city: 'Новосибирск', address: 'ул. Красный проспект, 1' },
+    destination: { city: 'Красноярск', address: 'ул. Мира, 10' },
+    weight: 15000,
+    cargoType: 'Оборудование',
+    price: 120000,
+    currency: 'RUB',
+    distance: 790,
+    urgent: false,
+    status: 'in_transit',
+    description: 'Перевозка промышленного оборудования',
+    createdAt: '2024-01-10T12:00:00Z',
+    pickupDate: '2024-01-12',
+  },
+  {
+    id: '4',
+    shipperId: '2',
+    origin: { city: 'Ростов-на-Дону', address: 'ул. Большая Садовая, 1' },
+    destination: { city: 'Сочи', address: 'ул. Навагинская, 1' },
+    weight: 3000,
+    cargoType: 'Продукты',
+    price: 35000,
+    currency: 'RUB',
+    distance: 560,
+    urgent: false,
+    status: 'active',
+    description: 'Перевозка продуктов питания',
+    createdAt: '2024-01-17T14:00:00Z',
+    pickupDate: '2024-01-22',
+  },
+  {
+    id: '5',
+    shipperId: '2',
+    brokerId: '3',
+    origin: { city: 'Владивосток', address: 'ул. Светланская, 1' },
+    destination: { city: 'Хабаровск', address: 'ул. Муравьева-Амурского, 1' },
+    weight: 8000,
+    cargoType: 'Электроника',
+    price: 95000,
+    currency: 'RUB',
+    distance: 760,
+    urgent: true,
+    status: 'assigned',
+    description: 'Срочная перевозка электроники',
+    createdAt: '2024-01-18T09:00:00Z',
+    pickupDate: '2024-01-19',
+  },
+]
+
+export default defineEventHandler(async (event) => {
+  const id = getRouterParam(event, 'id')
+  const load = mockLoads.find((l) => l.id === id)
+
+  if (!load) {
+    throw createError({
+      statusCode: 404,
+      message: 'Load not found',
+    })
+  }
+
+  return load
+})
+

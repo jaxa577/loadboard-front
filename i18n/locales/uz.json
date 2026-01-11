@@ -1,0 +1,163 @@
+{
+  "common": {
+    "loading": "Yuklanmoqda...",
+    "save": "Saqlash",
+    "cancel": "Bekor qilish",
+    "delete": "O'chirish",
+    "edit": "Tahrirlash",
+    "create": "Yaratish",
+    "search": "Qidirish",
+    "view": "Ko'rish",
+    "back": "Orqaga",
+    "submit": "Yuborish",
+    "apply": "Murojaat qilish",
+    "confirm": "Tasdiqlash",
+    "yes": "Ha",
+    "no": "Yo'q"
+  },
+  "nav": {
+    "home": "Bosh sahifa",
+    "loads": "Yuklar",
+    "myLoads": "Mening yuklarim",
+    "createLoad": "Yuk yaratish",
+    "applications": "Arizalar",
+    "deals": "Bitimlar",
+    "messages": "Xabarlar",
+    "profile": "Profil",
+    "admin": "Admin panel",
+    "logout": "Chiqish"
+  },
+  "auth": {
+    "login": "Kirish",
+    "register": "Ro'yxatdan o'tish",
+    "email": "Email",
+    "password": "Parol",
+    "name": "Ism",
+    "phone": "Telefon",
+    "role": "Rol",
+    "loginTitle": "Tizimga kirish",
+    "registerTitle": "Hisob yaratish",
+    "alreadyHaveAccount": "Hisobingiz bormi?",
+    "dontHaveAccount": "Hisobingiz yo'qmi?",
+    "loginError": "Kirish xatosi",
+    "registerError": "Ro'yxatdan o'tish xatosi"
+  },
+  "roles": {
+    "driver": "Haydovchi",
+    "broker": "Broker",
+    "shipper": "Yuk jo'natuvchi",
+    "admin": "Administrator"
+  },
+  "load": {
+    "title": "Yuk",
+    "loads": "Yuklar",
+    "createLoad": "Yuk yaratish",
+    "editLoad": "Yukni tahrirlash",
+    "route": "Marshrut",
+    "cargoDetails": "Yuk parametrlari",
+    "terms": "Shartlar",
+    "originCountry": "Jo'natish mamlakati",
+    "originCity": "Jo'natish shahri",
+    "destinationCountry": "Yetkazish mamlakati",
+    "destinationCity": "Yetkazish shahri",
+    "cargoType": "Yuk turi",
+    "weight": "Og'irligi (kg)",
+    "volume": "Hajmi (m³)",
+    "truckType": "Transport turi",
+    "price": "Narxi",
+    "paymentType": "To'lov usuli",
+    "loadingDate": "Yuklash sanasi",
+    "from": "Qayerdan",
+    "to": "Qayerga",
+    "status": "Holat",
+    "noLoads": "Yuklar yo'q",
+    "loadDetails": "Yuk tafsilotlari",
+    "selectCountry": "Mamlakatni tanlang"
+  },
+  "truckTypes": {
+    "TENT": "Tent",
+    "REFRIGERATOR": "Muzlatgich",
+    "CONTAINER": "Konteyner",
+    "PLATFORM": "Platforma",
+    "TANK": "Sisterna"
+  },
+  "paymentTypes": {
+    "CASH": "Naqd pul",
+    "CARD": "Karta",
+    "TRANSFER": "O'tkazma"
+  },
+  "loadStatus": {
+    "OPEN": "Ochiq",
+    "IN_PROGRESS": "Yo'lda",
+    "COMPLETED": "Yakunlandi",
+    "CANCELLED": "Bekor qilindi"
+  },
+  "countries": {
+    "Russia": "Rossiya",
+    "Kazakhstan": "Qozog'iston",
+    "Uzbekistan": "O'zbekiston",
+    "Kyrgyzstan": "Qirg'iziston",
+    "Belarus": "Belarus",
+    "Tajikistan": "Tojikiston",
+    "Turkmenistan": "Turkmaniston",
+    "Azerbaijan": "Ozarbayjon",
+    "Armenia": "Armaniston",
+    "Georgia": "Gruziya",
+    "Moldova": "Moldova"
+  },
+  "profile": {
+    "profile": "Profil",
+    "editProfile": "Profilni tahrirlash",
+    "myProfile": "Mening profilim",
+    "history": "Tarix",
+    "rating": "Reyting",
+    "verified": "Tasdiqlangan",
+    "notVerified": "Tasdiqlanmagan",
+    "noHistory": "Tarix bo'sh"
+  },
+  "application": {
+    "applications": "Arizalar",
+    "apply": "Ariza berish",
+    "accept": "Qabul qilish",
+    "reject": "Rad etish",
+    "myApplications": "Mening arizalarim",
+    "noApplications": "Arizalar yo'q",
+    "applicationSent": "Ariza yuborildi",
+    "applicationError": "Ariza yuborishda xatolik"
+  },
+  "deal": {
+    "deals": "Bitimlar",
+    "myDeals": "Mening bitimlarim",
+    "agreedPrice": "Kelishilgan narx",
+    "commission": "Komissiya",
+    "active": "Faol",
+    "completed": "Yakunlandi",
+    "disputed": "Bahsli"
+  },
+  "validation": {
+    "required": "Iltimos, barcha majburiy maydonlarni to'ldiring",
+    "invalidEmail": "Noto'g'ri email formati",
+    "passwordMinLength": "Parol kamida 6 ta belgidan iborat bo'lishi kerak",
+    "fillRouteFields": "Iltimos, marshrut maydonlarini to'ldiring",
+    "fillCargoFields": "Iltimos, yuk maydonlarini to'ldiring",
+    "selectLoadingDate": "Iltimos, yuklash sanasini tanlang"
+  },
+  "errors": {
+    "general": "Xatolik yuz berdi",
+    "notFound": "Topilmadi",
+    "unauthorized": "Avtorizatsiya talab qilinadi",
+    "forbidden": "Ruxsat berilmagan",
+    "serverError": "Server xatosi",
+    "networkError": "Tarmoq xatosi",
+    "saveError": "Saqlash xatosi",
+    "deleteError": "O'chirish xatosi",
+    "loadError": "Yuklash xatosi"
+  },
+  "admin": {
+    "adminPanel": "Admin panel",
+    "users": "Foydalanuvchilar",
+    "loads": "Yuklar",
+    "stats": "Statistika",
+    "confirmDelete": "O'chirishga ishonchingiz komilmi?"
+  }
+}
