@@ -13,7 +13,8 @@
     "apply": "Apply",
     "confirm": "Confirm",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "role": "Role"
   },
   "nav": {
     "home": "Home",
@@ -72,7 +73,21 @@
     "status": "Status",
     "noLoads": "No loads",
     "loadDetails": "Load Details",
-    "selectCountry": "Select country"
+    "selectCountry": "Select country",
+    "saveError": "Error saving load",
+    "fetchError": "Error loading data",
+    "createSuccess": "Load created successfully",
+    "updateSuccess": "Load updated successfully",
+    "apply": "Apply",
+    "applySuccess": "Application submitted successfully",
+    "applyError": "Error applying to load",
+    "alreadyApplied": "Already Applied",
+    "assignDriver": "Assign Driver",
+    "selectDriver": "Please select a driver",
+    "photos": "Photos",
+    "uploadPhotos": "Upload Load Photos",
+    "documents": "Documents",
+    "uploadDocuments": "Upload Documents"
   },
   "truckTypes": {
     "TENT": "Tent",
@@ -113,7 +128,8 @@
     "rating": "Rating",
     "verified": "Verified",
     "notVerified": "Not Verified",
-    "noHistory": "No history"
+    "noHistory": "No history",
+    "company": "Company"
   },
   "application": {
     "applications": "Applications",
@@ -123,7 +139,17 @@
     "myApplications": "My Applications",
     "noApplications": "No applications",
     "applicationSent": "Application sent",
-    "applicationError": "Application error"
+    "applicationError": "Application error",
+    "appliedAt": "Applied at",
+    "acceptSuccess": "Application accepted successfully",
+    "acceptError": "Error accepting application",
+    "rejectSuccess": "Application rejected successfully",
+    "rejectError": "Error rejecting application",
+    "status": {
+      "pending": "Pending",
+      "accepted": "Accepted",
+      "rejected": "Rejected"
+    }
   },
   "deal": {
     "deals": "Deals",
@@ -159,5 +185,101 @@
     "loads": "Loads",
     "stats": "Statistics",
     "confirmDelete": "Are you sure you want to delete?"
+  },
+  "filter": {
+    "searchPlaceholder": "Search loads by city, cargo type, or keywords...",
+    "minPrice": "Min. price",
+    "maxPrice": "Max. price",
+    "minWeight": "Min. weight (kg)",
+    "maxWeight": "Max. weight (kg)",
+    "allTruckTypes": "All truck types",
+    "allStatuses": "All statuses",
+    "clear": "Clear filters"
+  },
+  "landing": {
+    "hero": {
+      "title": "SNG LoadBoard",
+      "subtitle": "Cargo transportation platform in CIS",
+      "description": "Delivery, brokering, secure transactions",
+      "createAccount": "Create Account",
+      "login": "Login"
+    },
+    "features": {
+      "title": "Platform Advantages",
+      "drivers": {
+        "title": "For Drivers",
+        "description": "Find loads quickly, receive orders directly from shippers, increase your income"
+      },
+      "shippers": {
+        "title": "For Shippers",
+        "description": "Publish loads, choose reliable drivers, track delivery in real-time"
+      },
+      "brokers": {
+        "title": "For Brokers",
+        "description": "Manage clients, assign drivers, control transactions and earn commission"
+      }
+    },
+    "howItWorks": {
+      "title": "How It Works",
+      "step1": {
+        "title": "Register",
+        "description": "Create an account and choose your role"
+      },
+      "step2": {
+        "title": "Publish or Find",
+        "description": "Shippers publish loads, drivers find them"
+      },
+      "step3": {
+        "title": "Deal",
+        "description": "Agree on terms and complete the transaction"
+      }
+    },
+    "roles": {
+      "title": "Platform Roles",
+      "driver": {
+        "title": "Driver",
+        "feature1": "Find loads on the route",
+        "feature2": "Direct orders from shippers",
+        "feature3": "Transparent pricing"
+      },
+      "shipper": {
+        "title": "Shipper",
+        "feature1": "Publish loads",
+        "feature2": "Choose drivers by rating",
+        "feature3": "Delivery tracking"
+      },
+      "broker": {
+        "title": "Broker",
+        "feature1": "Manage clients",
+        "feature2": "Assign drivers",
+        "feature3": "Earn commission"
+      }
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "q1": {
+        "question": "How to register on the platform?",
+        "answer": "Click the 'Create Account' button, fill in the required fields and choose your role."
+      },
+      "q2": {
+        "question": "What roles are available?",
+        "answer": "The platform supports three roles: Driver, Shipper, and Broker."
+      },
+      "q3": {
+        "question": "How is payment processed?",
+        "answer": "Payment terms are agreed upon directly between parties. The platform ensures transparency and security of transactions."
+      },
+      "q4": {
+        "question": "How to publish a load?",
+        "answer": "After registration as a Shipper or Broker, go to 'Create Load' section, fill in the route, cargo details and terms."
+      }
+    },
+    "footer": {
+      "platform": "Platform",
+      "about": "About Us",
+      "legal": "Legal Information",
+      "copyright": "© 2024 SNG LoadBoard. All rights reserved.",
+      "testAccounts": "Test accounts"
+    }
   }
 }

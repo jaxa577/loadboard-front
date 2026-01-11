@@ -13,7 +13,8 @@
     "apply": "Murojaat qilish",
     "confirm": "Tasdiqlash",
     "yes": "Ha",
-    "no": "Yo'q"
+    "no": "Yo'q",
+    "role": "Rol"
   },
   "nav": {
     "home": "Bosh sahifa",
@@ -72,7 +73,21 @@
     "status": "Holat",
     "noLoads": "Yuklar yo'q",
     "loadDetails": "Yuk tafsilotlari",
-    "selectCountry": "Mamlakatni tanlang"
+    "selectCountry": "Mamlakatni tanlang",
+    "saveError": "Yukni saqlashda xatolik",
+    "fetchError": "Ma'lumotlarni yuklashda xatolik",
+    "createSuccess": "Yuk muvaffaqiyatli yaratildi",
+    "updateSuccess": "Yuk muvaffaqiyatli yangilandi",
+    "apply": "Murojaat qilish",
+    "applySuccess": "Ariza muvaffaqiyatli yuborildi",
+    "applyError": "Ariza yuborishda xatolik",
+    "alreadyApplied": "Allaqachon murojaat qilgansiz",
+    "assignDriver": "Haydovchini tayinlash",
+    "selectDriver": "Iltimos, haydovchini tanlang",
+    "photos": "Rasmlar",
+    "uploadPhotos": "Yuk rasmlarini yuklash",
+    "documents": "Hujjatlar",
+    "uploadDocuments": "Hujjatlarni yuklash"
   },
   "truckTypes": {
     "TENT": "Tent",
@@ -113,7 +128,8 @@
     "rating": "Reyting",
     "verified": "Tasdiqlangan",
     "notVerified": "Tasdiqlanmagan",
-    "noHistory": "Tarix bo'sh"
+    "noHistory": "Tarix bo'sh",
+    "company": "Kompaniya"
   },
   "application": {
     "applications": "Arizalar",
@@ -123,7 +139,17 @@
     "myApplications": "Mening arizalarim",
     "noApplications": "Arizalar yo'q",
     "applicationSent": "Ariza yuborildi",
-    "applicationError": "Ariza yuborishda xatolik"
+    "applicationError": "Ariza yuborishda xatolik",
+    "appliedAt": "Ariza berilgan",
+    "acceptSuccess": "Ariza muvaffaqiyatli qabul qilindi",
+    "acceptError": "Arizani qabul qilishda xatolik",
+    "rejectSuccess": "Ariza muvaffaqiyatli rad etildi",
+    "rejectError": "Arizani rad etishda xatolik",
+    "status": {
+      "pending": "Kutilmoqda",
+      "accepted": "Qabul qilindi",
+      "rejected": "Rad etildi"
+    }
   },
   "deal": {
     "deals": "Bitimlar",
@@ -159,5 +185,101 @@
     "loads": "Yuklar",
     "stats": "Statistika",
     "confirmDelete": "O'chirishga ishonchingiz komilmi?"
+  },
+  "filter": {
+    "searchPlaceholder": "Shahar, yuk turi yoki kalit so'zlar bo'yicha qidirish...",
+    "minPrice": "Min. narx",
+    "maxPrice": "Maks. narx",
+    "minWeight": "Min. og'irligi (kg)",
+    "maxWeight": "Maks. og'irligi (kg)",
+    "allTruckTypes": "Barcha transport turlari",
+    "allStatuses": "Barcha holatlar",
+    "clear": "Filtrlarni tozalash"
+  },
+  "landing": {
+    "hero": {
+      "title": "SNG LoadBoard",
+      "subtitle": "MDHda yuk tashish platformasi",
+      "description": "Yetkazib berish, brokerlik, xavfsiz bitimlar",
+      "createAccount": "Akkaunt yaratish",
+      "login": "Kirish"
+    },
+    "features": {
+      "title": "Platformaning afzalliklari",
+      "drivers": {
+        "title": "Haydovchilar uchun",
+        "description": "Yukni tez toping, jo'natuvchilardan to'g'ridan-to'g'ri buyurtmalar oling, daromadingizni oshiring"
+      },
+      "shippers": {
+        "title": "Jo'natuvchilar uchun",
+        "description": "Yuklarni e'lon qiling, ishonchli haydovchilarni tanlang, yetkazib berishni real vaqtda kuzating"
+      },
+      "brokers": {
+        "title": "Brokerlar uchun",
+        "description": "Mijozlarni boshqaring, haydovchilarni tayinlang, bitimlarni nazorat qiling va komissiya oling"
+      }
+    },
+    "howItWorks": {
+      "title": "Qanday ishlaydi",
+      "step1": {
+        "title": "Ro'yxatdan o'tish",
+        "description": "Akkaunt yarating va rolingizni tanlang"
+      },
+      "step2": {
+        "title": "E'lon qiling yoki toping",
+        "description": "Jo'natuvchilar yuklarni e'lon qiladi, haydovchilar ularni topadi"
+      },
+      "step3": {
+        "title": "Bitim",
+        "description": "Shartlarda kelishing va bitimni yakunlang"
+      }
+    },
+    "roles": {
+      "title": "Platforma rollari",
+      "driver": {
+        "title": "Haydovchi",
+        "feature1": "Marshrut bo'yicha yuklarni toping",
+        "feature2": "Jo'natuvchilardan to'g'ridan-to'g'ri buyurtmalar",
+        "feature3": "Shaffof narxlar"
+      },
+      "shipper": {
+        "title": "Jo'natuvchi",
+        "feature1": "Yuklarni e'lon qiling",
+        "feature2": "Reyting bo'yicha haydovchilarni tanlang",
+        "feature3": "Yetkazib berishni kuzatish"
+      },
+      "broker": {
+        "title": "Broker",
+        "feature1": "Mijozlarni boshqarish",
+        "feature2": "Haydovchilarni tayinlash",
+        "feature3": "Komissiya olish"
+      }
+    },
+    "faq": {
+      "title": "Tez-tez so'raladigan savollar",
+      "q1": {
+        "question": "Platformada qanday ro'yxatdan o'tish kerak?",
+        "answer": "'Akkaunt yaratish' tugmasini bosing, kerakli maydonlarni to'ldiring va rolingizni tanlang."
+      },
+      "q2": {
+        "question": "Qanday rollar mavjud?",
+        "answer": "Platforma uchta rolni qo'llab-quvvatlaydi: Haydovchi, Jo'natuvchi va Broker."
+      },
+      "q3": {
+        "question": "To'lov qanday amalga oshiriladi?",
+        "answer": "To'lov shartlari tomonlar o'rtasida bevosita kelishiladi. Platforma bitimlarning shaffofligi va xavfsizligini ta'minlaydi."
+      },
+      "q4": {
+        "question": "Yukni qanday e'lon qilish mumkin?",
+        "answer": "Jo'natuvchi yoki Broker sifatida ro'yxatdan o'tgandan so'ng, 'Yuk yaratish' bo'limiga o'ting, marshrut, yuk tafsilotlari va shartlarni to'ldiring."
+      }
+    },
+    "footer": {
+      "platform": "Platforma",
+      "about": "Biz haqimizda",
+      "legal": "Huquqiy ma'lumot",
+      "copyright": "© 2024 SNG LoadBoard. Barcha huquqlar himoyalangan.",
+      "testAccounts": "Test akkauntlar"
+    }
   }
 }
