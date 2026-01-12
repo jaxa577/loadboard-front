@@ -1,6 +1,6 @@
 export const useApi = () => {
   const config = useRuntimeConfig();
-  const apiBase = "https://clb-back-production.up.railway.app/api";
+  const apiBase = config.public.apiBase || "https://clb-back-production.up.railway.app/api/v1";
 
   const getAuthHeaders = () => {
     const token = localStorage.getItem("token");
