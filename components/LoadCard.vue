@@ -2,9 +2,15 @@
   <NuxtLink :to="`/loads/${load.id}`" class="card hover:shadow-lg transition-shadow duration-300 block">
     <div class="flex flex-col sm:flex-row items-start justify-between gap-3 sm:gap-4 mb-4">
       <div class="flex-1 w-full sm:w-auto">
-        <h3 class="text-base sm:text-lg lg:text-xl font-semibold text-gray-900 dark:text-white mb-1 break-words">
-          {{ load.originCity }}, {{ load.originCountry }} → {{ load.destinationCity }}, {{ load.destinationCountry }}
-        </h3>
+        <div class="flex items-start gap-2 mb-1">
+          <h3 class="text-base sm:text-lg lg:text-xl font-semibold text-gray-900 dark:text-white break-words">
+            {{ load.originCity }}, {{ load.originCountry }} → {{ load.destinationCity }}, {{ load.destinationCountry }}
+          </h3>
+          <span v-if="load.priority" :class="getPriorityBadgeClass(load.priority)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium whitespace-nowrap flex-shrink-0">
+            <component :is="getPriorityIcon(load.priority)" class="w-3 h-3" />
+            {{ getPriorityLabel(load.priority) }}
+          </span>
+        </div>
         <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
           {{ getTruckTypeLabel(load.truckType) }}
         </p>
@@ -75,6 +81,43 @@ const getTruckTypeLabel = (truckType: string) => {
 
 const getPaymentTypeLabel = (paymentType: string) => {
   return t(`paymentTypes.${paymentType}`)
+}
+
+const getPriorityLabel = (priority: string) => {
+  return t(`priorities.${priority}`)
+}
+
+const getPriorityBadgeClass = (priority: string) => {
+  const classes = {
+    'LOW': 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300',
+    'MEDIUM': 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300',
+    'HIGH': 'bg-orange-100 text-orange-700 dark:bg-orange-900 dark:text-orange-300',
+    'URGENT': 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300'
+  }
+  return classes[priority as keyof typeof classes] || classes.MEDIUM
+}
+
+const getPriorityIcon = (priority: string) => {
+  return defineComponent({
+    name: 'PriorityIcon',
+    setup() {
+      const icons = {
+        'LOW': () => h('svg', { fill: 'none', stroke: 'currentColor', viewBox: '0 0 24 24', xmlns: 'http://www.w3.org/2000/svg' }, [
+          h('path', { 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': '2', d: 'M19 14l-7 7m0 0l-7-7m7 7V3' })
+        ]),
+        'MEDIUM': () => h('svg', { fill: 'none', stroke: 'currentColor', viewBox: '0 0 24 24', xmlns: 'http://www.w3.org/2000/svg' }, [
+          h('path', { 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': '2', d: 'M5 10l7-7m0 0l7 7m-7-7v18' })
+        ]),
+        'HIGH': () => h('svg', { fill: 'none', stroke: 'currentColor', viewBox: '0 0 24 24', xmlns: 'http://www.w3.org/2000/svg' }, [
+          h('path', { 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': '2', d: 'M5 10l7-7m0 0l7 7m-7-7v18' })
+        ]),
+        'URGENT': () => h('svg', { fill: 'currentColor', viewBox: '0 0 24 24', xmlns: 'http://www.w3.org/2000/svg' }, [
+          h('path', { d: 'M13 10V3L4 14h7v7l9-11h-7z' })
+        ])
+      }
+      return icons[priority as keyof typeof icons] || icons.MEDIUM
+    }
+  })
 }
 </script>
 
