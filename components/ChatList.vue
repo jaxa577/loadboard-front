@@ -14,10 +14,10 @@
         <div class="flex items-start justify-between mb-2">
           <div class="flex-1">
             <div class="font-medium text-gray-900 dark:text-white">
-              Чат #{{ chat.id }}
+              {{ chat.otherUser?.name || 'Unknown User' }}
             </div>
             <div v-if="chat.lastMessage" class="text-sm text-gray-500 dark:text-gray-400 truncate">
-              {{ chat.lastMessage.text }}
+              {{ chat.lastMessage.content }}
             </div>
           </div>
           <div v-if="chat.unreadCount > 0" class="ml-2">

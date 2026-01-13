@@ -57,19 +57,29 @@ export interface Load {
 
 export interface Message {
   id: string
-  chatId: string
   senderId: string
-  text: string
-  read: boolean
+  receiverId: string
+  content: string
   createdAt: string
+  sender?: {
+    id: string
+    name: string
+  }
+  receiver?: {
+    id: string
+    name: string
+  }
 }
 
 export interface Chat {
   id: string
-  participants: string[]
+  otherUser?: {
+    id: string
+    name: string
+    role: string
+  }
   lastMessage?: Message
   unreadCount: number
-  createdAt: string
   updatedAt: string
 }
 

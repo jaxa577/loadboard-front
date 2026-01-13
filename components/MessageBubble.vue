@@ -13,7 +13,7 @@
           : 'bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white'
       ]"
     >
-      <p class="text-sm">{{ message.text }}</p>
+      <p class="text-sm">{{ message.content }}</p>
       <p
         :class="[
           'text-xs mt-1',

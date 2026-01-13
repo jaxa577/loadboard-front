@@ -21,9 +21,24 @@ export const useChatStore = defineStore('chat', {
 
   actions: {
     async fetchChats() {
-      // Backend doesn't have chat list endpoint yet, return empty for now
-      this.chats = []
-      return []
+      try {
+        const config = useRuntimeConfig()
+        const apiBase = config.public.apiBase || 'https://clb-back-production.up.railway.app/api/v1'
+        const token = localStorage.getItem('token')
+        if (!token) throw new Error('Not authenticated')
+
+        const chats = await $fetch<Chat[]>(`${apiBase}/chat`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
+        this.chats = chats
+        return chats
+      } catch (error) {
+        console.error('Error fetching chats:', error)
+        this.chats = []
+        return []
+      }
     },
 
     async fetchMessages(userId: string) {
