@@ -15,7 +15,11 @@ export default defineNuxtConfig({
     locales: [
       { code: 'ru', iso: 'ru-RU', name: 'Русский', file: 'ru.json' },
       { code: 'uz', iso: 'uz-UZ', name: "O'zbek", file: 'uz.json' },
-      { code: 'en', iso: 'en-US', name: 'English', file: 'en.json' }
+      { code: 'en', iso: 'en-US', name: 'English', file: 'en.json' },
+      { code: 'kk', iso: 'kk-KZ', name: 'Қазақша', file: 'kk.json' },
+      { code: 'ky', iso: 'ky-KG', name: 'Кыргызча', file: 'ky.json' },
+      { code: 'tr', iso: 'tr-TR', name: 'Türkçe', file: 'tr.json' },
+      { code: 'tg', iso: 'tg-TJ', name: 'Тоҷикӣ', file: 'tg.json' }
     ],
     lazy: true,
     langDir: 'locales',

@@ -1,0 +1,314 @@
+{
+  "common": {
+    "loading": "Yükleniyor...",
+    "save": "Kaydet",
+    "cancel": "İptal",
+    "delete": "Sil",
+    "edit": "Düzenle",
+    "create": "Oluştur",
+    "search": "Ara",
+    "view": "Görüntüle",
+    "back": "Geri",
+    "submit": "Gönder",
+    "apply": "Uygula",
+    "confirm": "Onayla",
+    "yes": "Evet",
+    "no": "Hayır",
+    "role": "Rol"
+  },
+  "nav": {
+    "home": "Ana Sayfa",
+    "loads": "Yükler",
+    "myLoads": "Yüklerim",
+    "createLoad": "Yük Oluştur",
+    "applications": "Başvurular",
+    "deals": "Anlaşmalar",
+    "messages": "Mesajlar",
+    "profile": "Profil",
+    "admin": "Yönetici Paneli",
+    "logout": "Çıkış"
+  },
+  "auth": {
+    "login": "Giriş",
+    "register": "Kayıt Ol",
+    "email": "E-posta",
+    "password": "Şifre",
+    "name": "İsim",
+    "phone": "Telefon",
+    "role": "Rol",
+    "loginTitle": "Sisteme Giriş",
+    "registerTitle": "Hesap Oluştur",
+    "alreadyHaveAccount": "Hesabınız var mı?",
+    "dontHaveAccount": "Hesabınız yok mu?",
+    "loginError": "Giriş hatası",
+    "registerError": "Kayıt hatası"
+  },
+  "roles": {
+    "driver": "Sürücü",
+    "broker": "Broker",
+    "shipper": "Gönderici",
+    "admin": "Yönetici"
+  },
+  "load": {
+    "title": "Yük",
+    "loads": "Yükler",
+    "createLoad": "Yük Oluştur",
+    "editLoad": "Yükü Düzenle",
+    "route": "Rota",
+    "cargoDetails": "Yük Detayları",
+    "terms": "Şartlar",
+    "originCountry": "Gönderim Ülkesi",
+    "originCity": "Gönderim Şehri",
+    "destinationCountry": "Varış Ülkesi",
+    "destinationCity": "Varış Şehri",
+    "cargoType": "Yük Türü",
+    "weight": "Ağırlık (kg)",
+    "volume": "Hacim (m³)",
+    "truckType": "Araç Türü",
+    "price": "Fiyat",
+    "currency": "Para Birimi",
+    "negotiablePrice": "Pazarlık Edilebilir Fiyat",
+    "prepayment": "Ön Ödeme Tutarı",
+    "prepaymentCurrency": "Ön Ödeme Para Birimi",
+    "trucksCount": "Araç Sayısı",
+    "paymentType": "Ödeme Yöntemi",
+    "loadingDate": "Yükleme Tarihi",
+    "from": "Nereden",
+    "to": "Nereye",
+    "status": "Durum",
+    "noLoads": "Yük yok",
+    "loadDetails": "Yük Detayları",
+    "selectCountry": "Ülke seçin",
+    "saveError": "Yük kaydetme hatası",
+    "fetchError": "Veri yükleme hatası",
+    "createSuccess": "Yük başarıyla oluşturuldu",
+    "updateSuccess": "Yük başarıyla güncellendi",
+    "apply": "Başvur",
+    "applySuccess": "Başvuru başarıyla gönderildi",
+    "applyError": "Başvuru gönderme hatası",
+    "alreadyApplied": "Zaten başvuruldu",
+    "assignDriver": "Sürücü Ata",
+    "selectDriver": "Lütfen bir sürücü seçin",
+    "photos": "Fotoğraflar",
+    "uploadPhotos": "Yük Fotoğraflarını Yükle",
+    "documents": "Belgeler",
+    "uploadDocuments": "Belgeleri Yükle",
+    "priceOrNegotiable": "Lütfen fiyat belirtin veya pazarlık edilebilir olarak işaretleyin"
+  },
+  "truckTypes": {
+    "TENT": "Tenteli",
+    "REFRIGERATOR": "Soğutmalı",
+    "CONTAINER": "Konteyner",
+    "PLATFORM": "Platform",
+    "TANK": "Tanker"
+  },
+  "paymentTypes": {
+    "CASH": "Nakit",
+    "CARD": "Kart",
+    "TRANSFER": "Havale"
+  },
+  "loadStatus": {
+    "OPEN": "Açık",
+    "IN_PROGRESS": "Yolda",
+    "COMPLETED": "Tamamlandı",
+    "CANCELLED": "İptal Edildi"
+  },
+  "countries": {
+    "Russia": "Rusya",
+    "Kazakhstan": "Kazakistan",
+    "Uzbekistan": "Özbekistan",
+    "Kyrgyzstan": "Kırgızistan",
+    "Belarus": "Belarus",
+    "Tajikistan": "Tacikistan",
+    "Turkmenistan": "Türkmenistan",
+    "Azerbaijan": "Azerbaycan",
+    "Armenia": "Ermenistan",
+    "Georgia": "Gürcistan",
+    "Moldova": "Moldova",
+    "Germany": "Almanya",
+    "France": "Fransa",
+    "Italy": "İtalya",
+    "Spain": "İspanya",
+    "Poland": "Polonya",
+    "Netherlands": "Hollanda",
+    "Belgium": "Belçika",
+    "Austria": "Avusturya",
+    "Czech Republic": "Çek Cumhuriyeti",
+    "Hungary": "Macaristan",
+    "Romania": "Romanya",
+    "Bulgaria": "Bulgaristan",
+    "Greece": "Yunanistan",
+    "Portugal": "Portekiz",
+    "Sweden": "İsveç",
+    "Finland": "Finlandiya",
+    "Denmark": "Danimarka",
+    "Norway": "Norveç",
+    "Switzerland": "İsviçre",
+    "Turkey": "Türkiye",
+    "China": "Çin",
+    "South Korea": "Güney Kore",
+    "Japan": "Japonya"
+  },
+  "profile": {
+    "profile": "Profil",
+    "editProfile": "Profili Düzenle",
+    "myProfile": "Profilim",
+    "history": "Geçmiş",
+    "rating": "Değerlendirme",
+    "verified": "Doğrulanmış",
+    "notVerified": "Doğrulanmamış",
+    "noHistory": "Geçmiş boş",
+    "company": "Şirket"
+  },
+  "application": {
+    "applications": "Başvurular",
+    "apply": "Başvur",
+    "accept": "Kabul Et",
+    "reject": "Reddet",
+    "myApplications": "Başvurularım",
+    "noApplications": "Başvuru yok",
+    "applicationSent": "Başvuru gönderildi",
+    "applicationError": "Başvuru hatası",
+    "appliedAt": "Başvuru tarihi",
+    "acceptSuccess": "Başvuru başarıyla kabul edildi",
+    "acceptError": "Başvuru kabul hatası",
+    "rejectSuccess": "Başvuru başarıyla reddedildi",
+    "rejectError": "Başvuru reddetme hatası",
+    "status": {
+      "pending": "Beklemede",
+      "accepted": "Kabul Edildi",
+      "rejected": "Reddedildi"
+    }
+  },
+  "deal": {
+    "deals": "Anlaşmalar",
+    "myDeals": "Anlaşmalarım",
+    "agreedPrice": "Anlaşılan Fiyat",
+    "commission": "Komisyon",
+    "active": "Aktif",
+    "completed": "Tamamlandı",
+    "disputed": "Tartışmalı"
+  },
+  "validation": {
+    "required": "Lütfen tüm zorunlu alanları doldurun",
+    "invalidEmail": "Geçersiz e-posta formatı",
+    "passwordMinLength": "Şifre en az 6 karakter olmalıdır",
+    "fillRouteFields": "Lütfen rota alanlarını doldurun",
+    "fillCargoFields": "Lütfen yük alanlarını doldurun",
+    "selectLoadingDate": "Lütfen yükleme tarihini seçin"
+  },
+  "errors": {
+    "general": "Bir hata oluştu",
+    "notFound": "Bulunamadı",
+    "unauthorized": "Yetkilendirme gerekli",
+    "forbidden": "Erişim reddedildi",
+    "serverError": "Sunucu hatası",
+    "networkError": "Ağ hatası",
+    "saveError": "Kaydetme hatası",
+    "deleteError": "Silme hatası",
+    "loadError": "Yükleme hatası"
+  },
+  "admin": {
+    "adminPanel": "Yönetici Paneli",
+    "users": "Kullanıcılar",
+    "loads": "Yükler",
+    "stats": "İstatistikler",
+    "confirmDelete": "Silmek istediğinizden emin misiniz?"
+  },
+  "filter": {
+    "searchPlaceholder": "Şehir, yük türü veya anahtar kelimelere göre arama...",
+    "minPrice": "Min. fiyat",
+    "maxPrice": "Maks. fiyat",
+    "minWeight": "Min. ağırlık (kg)",
+    "maxWeight": "Maks. ağırlık (kg)",
+    "allTruckTypes": "Tüm araç türleri",
+    "allStatuses": "Tüm durumlar",
+    "clear": "Filtreleri temizle"
+  },
+  "landing": {
+    "hero": {
+      "title": "SNG LoadBoard",
+      "subtitle": "BDT'de yük taşıma platformu",
+      "description": "Teslimat, brokerlik, güvenli anlaşmalar",
+      "createAccount": "Hesap Oluştur",
+      "login": "Giriş"
+    },
+    "features": {
+      "title": "Platform Avantajları",
+      "drivers": {
+        "title": "Sürücüler için",
+        "description": "Yükleri hızlıca bulun, göndericilerden doğrudan sipariş alın, gelirinizi artırın"
+      },
+      "shippers": {
+        "title": "Göndericiler için",
+        "description": "Yük yayınlayın, güvenilir sürücüler seçin, teslimatı gerçek zamanlı takip edin"
+      },
+      "brokers": {
+        "title": "Brokerlar için",
+        "description": "Müşterileri yönetin, sürücü atayın, anlaşmaları kontrol edin ve komisyon kazanın"
+      }
+    },
+    "howItWorks": {
+      "title": "Nasıl Çalışır",
+      "step1": {
+        "title": "Kayıt Olun",
+        "description": "Hesap oluşturun ve rolünüzü seçin"
+      },
+      "step2": {
+        "title": "Yayınlayın veya Bulun",
+        "description": "Göndericiler yük yayınlar, sürücüler bulur"
+      },
+      "step3": {
+        "title": "Anlaşma",
+        "description": "Şartlar üzerinde anlaşın ve işlemi tamamlayın"
+      }
+    },
+    "roles": {
+      "title": "Platform Rolleri",
+      "driver": {
+        "title": "Sürücü",
+        "feature1": "Rota üzerinde yük bulun",
+        "feature2": "Göndericilerden doğrudan siparişler",
+        "feature3": "Şeffaf fiyatlandırma"
+      },
+      "shipper": {
+        "title": "Gönderici",
+        "feature1": "Yük yayınlayın",
+        "feature2": "Değerlendirmeye göre sürücü seçin",
+        "feature3": "Teslimat takibi"
+      },
+      "broker": {
+        "title": "Broker",
+        "feature1": "Müşteri yönetimi",
+        "feature2": "Sürücü atama",
+        "feature3": "Komisyon kazanma"
+      }
+    },
+    "faq": {
+      "title": "Sık Sorulan Sorular",
+      "q1": {
+        "question": "Platformda nasıl kayıt olunur?",
+        "answer": "'Hesap Oluştur' düğmesine tıklayın, gerekli alanları doldurun ve rolünüzü seçin."
+      },
+      "q2": {
+        "question": "Hangi roller mevcut?",
+        "answer": "Platform üç rolü destekler: Sürücü, Gönderici ve Broker."
+      },
+      "q3": {
+        "question": "Ödeme nasıl yapılır?",
+        "answer": "Ödeme şartları taraflar arasında doğrudan kararlaştırılır. Platform anlaşmaların şeffaflığını ve güvenliğini sağlar."
+      },
+      "q4": {
+        "question": "Yük nasıl yayınlanır?",
+        "answer": "Gönderici veya Broker olarak kaydolduktan sonra, 'Yük Oluştur' bölümüne gidin, rotayı, yük detaylarını ve şartları doldurun."
+      }
+    },
+    "footer": {
+      "platform": "Platform",
+      "about": "Hakkımızda",
+      "legal": "Yasal Bilgiler",
+      "copyright": "© 2024 SNG LoadBoard. Tüm hakları saklıdır.",
+      "testAccounts": "Test hesapları"
+    }
+  }
+}
