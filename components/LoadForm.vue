@@ -45,19 +45,57 @@
         <template #header>
           <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{ $t('load.terms') }}</h3>
         </template>
-        <div class="grid md:grid-cols-2 gap-4">
-          <UFormGroup :label="$t('load.price')" required>
-            <UInput v-model.number="formData.price" type="number" placeholder="50000" />
-          </UFormGroup>
-          <UFormGroup :label="$t('load.paymentType')" required>
-            <USelect v-model="formData.paymentType" :options="paymentTypes" />
-          </UFormGroup>
-          <UFormGroup :label="$t('load.loadingDate')" required>
-            <UInput v-model="formData.loadingDate" type="date" />
-          </UFormGroup>
-          <UFormGroup :label="$t('load.contactPhone')">
-            <UInput v-model="formData.contactPhone" type="tel" placeholder="+7 (999) 123-45-67" />
-          </UFormGroup>
+        <div class="space-y-4">
+          <!-- Negotiable Price Checkbox -->
+          <div class="flex items-center space-x-2">
+            <input
+              id="negotiablePrice"
+              v-model="formData.negotiablePrice"
+              type="checkbox"
+              class="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 rounded focus:ring-primary-500"
+            />
+            <label for="negotiablePrice" class="text-sm font-medium text-gray-900 dark:text-white">
+              Negotiable Price (Договорная цена)
+            </label>
+          </div>
+
+          <!-- Price and Currency -->
+          <div v-if="!formData.negotiablePrice" class="grid md:grid-cols-2 gap-4">
+            <UFormGroup label="Price" required>
+              <UInput v-model.number="formData.price" type="number" placeholder="50000" />
+            </UFormGroup>
+            <UFormGroup label="Currency" required>
+              <USelect v-model="formData.currency" :options="currencies" />
+            </UFormGroup>
+          </div>
+
+          <!-- Prepayment -->
+          <div class="space-y-4">
+            <div class="grid md:grid-cols-2 gap-4">
+              <UFormGroup label="Prepayment Amount (Optional)">
+                <UInput v-model.number="formData.prepayment" type="number" placeholder="10000" />
+              </UFormGroup>
+              <UFormGroup v-if="formData.prepayment" label="Prepayment Currency">
+                <USelect v-model="formData.prepaymentCurrency" :options="currencies" />
+              </UFormGroup>
+            </div>
+          </div>
+
+          <!-- Other fields -->
+          <div class="grid md:grid-cols-2 gap-4">
+            <UFormGroup label="Number of Trucks (Optional)">
+              <UInput v-model.number="formData.trucksCount" type="number" placeholder="1" min="1" />
+            </UFormGroup>
+            <UFormGroup :label="$t('load.paymentType')" required>
+              <USelect v-model="formData.paymentType" :options="paymentTypes" />
+            </UFormGroup>
+            <UFormGroup :label="$t('load.loadingDate')" required>
+              <UInput v-model="formData.loadingDate" type="date" />
+            </UFormGroup>
+            <UFormGroup :label="$t('load.contactPhone')">
+              <UInput v-model="formData.contactPhone" type="tel" placeholder="+7 (999) 123-45-67" />
+            </UFormGroup>
+          </div>
         </div>
       </UCard>
 
@@ -112,7 +150,24 @@ const { t } = useI18n()
 const authStore = useAuthStore()
 const toast = useToastNotification()
 
-const countries = ['Russia', 'Kazakhstan', 'Uzbekistan', 'Kyrgyzstan', 'Belarus', 'Tajikistan', 'Turkmenistan', 'Azerbaijan', 'Armenia', 'Georgia', 'Moldova']
+const countries = [
+  'Russia', 'Kazakhstan', 'Uzbekistan', 'Kyrgyzstan', 'Belarus',
+  'Tajikistan', 'Turkmenistan', 'Azerbaijan', 'Armenia', 'Georgia', 'Moldova',
+  'Germany', 'France', 'Italy', 'Spain', 'Poland', 'Netherlands', 'Belgium',
+  'Austria', 'Czech Republic', 'Hungary', 'Romania', 'Bulgaria', 'Greece',
+  'Portugal', 'Sweden', 'Finland', 'Denmark', 'Norway', 'Switzerland',
+  'Turkey', 'China', 'South Korea', 'Japan'
+]
+
+const currencies = [
+  { label: 'USD ($)', value: 'USD' },
+  { label: 'EUR (€)', value: 'EUR' },
+  { label: 'RUB (₽)', value: 'RUB' },
+  { label: 'KZT (₸)', value: 'KZT' },
+  { label: 'CNY (¥)', value: 'CNY' },
+  { label: 'TRY (₺)', value: 'TRY' },
+  { label: 'KRW (₩)', value: 'KRW' },
+]
 
 const truckTypes = computed(() => [
   { label: t('truckTypes.TENT'), value: 'TENT' },
@@ -137,7 +192,12 @@ const formData = ref({
   weight: (props.load as any)?.weight || 0,
   volume: (props.load as any)?.volume || undefined,
   truckType: (props.load as any)?.truckType || 'TENT',
+  negotiablePrice: (props.load as any)?.negotiablePrice || false,
   price: (props.load as any)?.price || 0,
+  currency: (props.load as any)?.currency || 'USD',
+  prepayment: (props.load as any)?.prepayment || undefined,
+  prepaymentCurrency: (props.load as any)?.prepaymentCurrency || 'USD',
+  trucksCount: (props.load as any)?.trucksCount || undefined,
   paymentType: (props.load as any)?.paymentType || 'CASH',
   loadingDate: (props.load as any)?.loadingDate ? new Date((props.load as any).loadingDate).toISOString().split('T')[0] : '',
   contactPhone: (props.load as any)?.contactPhone || '',
@@ -153,8 +213,13 @@ const handleSubmit = () => {
     return
   }
 
-  if (!formData.value.cargoType || !formData.value.weight || !formData.value.price) {
+  if (!formData.value.cargoType || !formData.value.weight) {
     toast.warning(t('validation.fillCargoFields'))
+    return
+  }
+
+  if (!formData.value.negotiablePrice && !formData.value.price) {
+    toast.warning('Please specify price or mark it as negotiable')
     return
   }
 
@@ -173,7 +238,12 @@ const handleSubmit = () => {
     weight: Number(formData.value.weight),
     volume: formData.value.volume ? Number(formData.value.volume) : undefined,
     truckType: formData.value.truckType,
-    price: Number(formData.value.price),
+    negotiablePrice: formData.value.negotiablePrice,
+    price: formData.value.negotiablePrice ? undefined : Number(formData.value.price),
+    currency: formData.value.currency,
+    prepayment: formData.value.prepayment ? Number(formData.value.prepayment) : undefined,
+    prepaymentCurrency: formData.value.prepayment ? formData.value.prepaymentCurrency : undefined,
+    trucksCount: formData.value.trucksCount ? Number(formData.value.trucksCount) : undefined,
     paymentType: formData.value.paymentType,
     loadingDate: formData.value.loadingDate,
     contactPhone: formData.value.contactPhone || undefined,

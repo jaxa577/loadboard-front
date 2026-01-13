@@ -11,7 +11,8 @@
       </div>
       <div class="text-left sm:text-right w-full sm:w-auto">
         <div class="text-xl sm:text-2xl font-bold text-primary-600 dark:text-primary-400">
-          {{ formatPrice(load.price) }}
+          <span v-if="load.negotiablePrice">Negotiable</span>
+          <span v-else>{{ formatPrice(load.price, load.currency) }}</span>
         </div>
         <div class="text-xs text-gray-500 dark:text-gray-400">{{ getPaymentTypeLabel(load.paymentType) }}</div>
       </div>
@@ -46,8 +47,18 @@ defineProps<{
 
 const { t, locale } = useI18n()
 
-const formatPrice = (price: number) => {
-  return new Intl.NumberFormat(locale.value).format(price)
+const formatPrice = (price: number, currency: string = 'USD') => {
+  const currencySymbols: Record<string, string> = {
+    'USD': '$',
+    'EUR': '€',
+    'RUB': '₽',
+    'KZT': '₸',
+    'CNY': '¥',
+    'TRY': '₺',
+    'KRW': '₩'
+  }
+  const symbol = currencySymbols[currency] || currency
+  return `${new Intl.NumberFormat(locale.value).format(price)} ${symbol}`
 }
 
 const formatDate = (date: string) => {
