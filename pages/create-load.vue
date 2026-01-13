@@ -1,7 +1,7 @@
 <template>
   <NuxtLayout name="app">
-    <div class="max-w-2xl mx-auto">
-      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-8">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-0">
+      <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-6 sm:mb-8">
         {{ isEdit ? $t('load.editLoad') : $t('nav.createLoad') }}
       </h1>
 

@@ -1,14 +1,14 @@
 <template>
   <NuxtLayout name="app">
-    <div class="max-w-6xl mx-auto">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-0">
       <UButton color="gray" variant="ghost" icon="i-heroicons-arrow-left" class="mb-4" @click="router.back()">
         {{ $t('common.back') }}
       </UButton>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="md:col-span-1">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+        <div class="hidden md:block md:col-span-1">
           <ChatList />
         </div>
-        <div class="md:col-span-2">
+        <div class="col-span-1 md:col-span-2">
           <ChatWindow v-if="chatId" :chat-id="chatId" />
         </div>
       </div>

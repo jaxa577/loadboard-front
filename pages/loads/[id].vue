@@ -4,31 +4,31 @@
       <div class="text-gray-500 dark:text-gray-400">{{ $t('common.loading') }}</div>
     </div>
 
-    <div v-else-if="load" class="max-w-4xl mx-auto space-y-4">
+    <div v-else-if="load" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-0 space-y-4">
       <UButton color="gray" variant="ghost" icon="i-heroicons-arrow-left" @click="router.back()">
         {{ $t('common.back') }}
       </UButton>
 
       <div class="card mb-6">
-        <div class="flex items-start justify-between mb-6">
-          <div>
-            <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+        <div class="flex flex-col sm:flex-row items-start justify-between gap-4 mb-6">
+          <div class="flex-1">
+            <h1 class="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-2 break-words">
               {{ load.originCity }}, {{ $t(`countries.${load.originCountry}`) }} → {{ load.destinationCity }}, {{ $t(`countries.${load.destinationCountry}`) }}
             </h1>
-            <div class="flex items-center space-x-4 text-sm text-gray-600 dark:text-gray-400">
+            <div class="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
               <span>{{ getTruckTypeLabel(load.truckType) }}</span>
               <span>{{ getPaymentTypeLabel(load.paymentType) }}</span>
             </div>
           </div>
-          <div class="text-right">
-            <div class="text-3xl font-bold text-primary-600 dark:text-primary-400">
+          <div class="text-left sm:text-right w-full sm:w-auto">
+            <div class="text-2xl sm:text-3xl font-bold text-primary-600 dark:text-primary-400">
               {{ formatPrice(load.price) }}
             </div>
-            <div class="text-sm text-gray-500 dark:text-gray-400">{{ getPaymentTypeLabel(load.paymentType) }}</div>
+            <div class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">{{ getPaymentTypeLabel(load.paymentType) }}</div>
           </div>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-6 mb-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-6">
           <div>
             <h3 class="font-semibold text-gray-900 dark:text-white mb-2">{{ $t('load.from') }}</h3>
             <p class="text-gray-600 dark:text-gray-400">{{ load.originCity }}, {{ $t(`countries.${load.originCountry}`) }}</p>
@@ -39,28 +39,28 @@
           </div>
         </div>
 
-        <div class="grid md:grid-cols-4 gap-4 mb-6">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-6">
           <div>
-            <div class="text-sm text-gray-500 dark:text-gray-400">{{ $t('load.weight') }}</div>
-            <div class="text-lg font-semibold text-gray-900 dark:text-white">
+            <div class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">{{ $t('load.weight') }}</div>
+            <div class="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">
               {{ load.weight }} кг
             </div>
           </div>
           <div v-if="load.volume">
-            <div class="text-sm text-gray-500 dark:text-gray-400">{{ $t('load.volume') }}</div>
-            <div class="text-lg font-semibold text-gray-900 dark:text-white">
+            <div class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">{{ $t('load.volume') }}</div>
+            <div class="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">
               {{ load.volume }} м³
             </div>
           </div>
           <div>
-            <div class="text-sm text-gray-500 dark:text-gray-400">{{ $t('load.cargoType') }}</div>
-            <div class="text-lg font-semibold text-gray-900 dark:text-white">
+            <div class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">{{ $t('load.cargoType') }}</div>
+            <div class="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">
               {{ load.cargoType }}
             </div>
           </div>
           <div>
-            <div class="text-sm text-gray-500 dark:text-gray-400">{{ $t('load.status') }}</div>
-            <div class="text-lg font-semibold text-gray-900 dark:text-white">
+            <div class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">{{ $t('load.status') }}</div>
+            <div class="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">
               {{ getStatusLabel(load.status) }}
             </div>
           </div>

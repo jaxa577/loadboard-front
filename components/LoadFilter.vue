@@ -12,7 +12,7 @@
     </div>
 
     <!-- Filter Options -->
-    <div class="grid md:grid-cols-4 gap-4 mb-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-4">
       <input
         v-model="filters.originCity"
         type="text"
@@ -43,7 +43,7 @@
       />
     </div>
 
-    <div class="grid md:grid-cols-5 gap-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
       <input
         v-model.number="filters.minWeight"
         type="number"
@@ -82,7 +82,7 @@
       </select>
       <button
         @click="clearFilters"
-        class="btn-secondary"
+        class="btn-secondary w-full"
       >
         {{ $t('filter.clear') }}
       </button>
