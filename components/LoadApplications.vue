@@ -128,14 +128,23 @@ const handleAccept = async (applicationId: string) => {
   actionLoading.value = applicationId
   try {
     const token = localStorage.getItem('token')
+    const application = applications.value.find(app => app.id === applicationId)
+
     await $fetch(`${config.public.apiBase}/applications/${applicationId}/accept`, {
       method: 'PATCH',
       headers: {
         Authorization: `Bearer ${token}`
       }
     })
-    toast.success(t('application.acceptSuccess'))
+    toast.success(t('application.acceptSuccess') + ' - ' + t('application.messageSent'))
     await fetchApplications()
+
+    // Open chat with the applicant after a short delay
+    if (application) {
+      setTimeout(() => {
+        router.push(`/chat/${application.applicantId}`)
+      }, 1500)
+    }
   } catch (error) {
     toast.handleApiError(error, t('application.acceptError'))
   } finally {
@@ -147,14 +156,23 @@ const handleReject = async (applicationId: string) => {
   actionLoading.value = applicationId
   try {
     const token = localStorage.getItem('token')
+    const application = applications.value.find(app => app.id === applicationId)
+
     await $fetch(`${config.public.apiBase}/applications/${applicationId}/reject`, {
       method: 'PATCH',
       headers: {
         Authorization: `Bearer ${token}`
       }
     })
-    toast.success(t('application.rejectSuccess'))
+    toast.success(t('application.rejectSuccess') + ' - ' + t('application.messageSent'))
     await fetchApplications()
+
+    // Optionally open chat after rejection as well
+    if (application) {
+      setTimeout(() => {
+        router.push(`/chat/${application.applicantId}`)
+      }, 1500)
+    }
   } catch (error) {
     toast.handleApiError(error, t('application.rejectError'))
   } finally {
