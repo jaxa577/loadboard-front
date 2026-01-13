@@ -71,6 +71,7 @@
     "prepayment": "Oldindan to'lov summasi",
     "prepaymentCurrency": "Oldindan to'lov valyutasi",
     "trucksCount": "Mashinalar soni",
+    "priority": "Muhimlik darajasi",
     "paymentType": "To'lov usuli",
     "loadingDate": "Yuklash sanasi",
     "from": "Qayerdan",
@@ -106,6 +107,12 @@
     "CASH": "Naqd pul",
     "CARD": "Karta",
     "TRANSFER": "O'tkazma"
+  },
+  "priorities": {
+    "LOW": "Past",
+    "MEDIUM": "O'rtacha",
+    "HIGH": "Yuqori",
+    "URGENT": "Shoshilinch"
   },
   "loadStatus": {
     "OPEN": "Ochiq",

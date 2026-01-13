@@ -71,6 +71,7 @@
     "prepayment": "Prepayment Amount",
     "prepaymentCurrency": "Prepayment Currency",
     "trucksCount": "Number of Trucks",
+    "priority": "Priority",
     "paymentType": "Payment Method",
     "loadingDate": "Loading Date",
     "from": "From",
@@ -106,6 +107,12 @@
     "CASH": "Cash",
     "CARD": "Card",
     "TRANSFER": "Transfer"
+  },
+  "priorities": {
+    "LOW": "Low",
+    "MEDIUM": "Medium",
+    "HIGH": "High",
+    "URGENT": "Urgent"
   },
   "loadStatus": {
     "OPEN": "Open",

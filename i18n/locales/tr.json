@@ -71,6 +71,7 @@
     "prepayment": "Ön Ödeme Tutarı",
     "prepaymentCurrency": "Ön Ödeme Para Birimi",
     "trucksCount": "Araç Sayısı",
+    "priority": "Öncelik",
     "paymentType": "Ödeme Yöntemi",
     "loadingDate": "Yükleme Tarihi",
     "from": "Nereden",
@@ -106,6 +107,12 @@
     "CASH": "Nakit",
     "CARD": "Kart",
     "TRANSFER": "Havale"
+  },
+  "priorities": {
+    "LOW": "Düşük",
+    "MEDIUM": "Orta",
+    "HIGH": "Yüksek",
+    "URGENT": "Acil"
   },
   "loadStatus": {
     "OPEN": "Açık",

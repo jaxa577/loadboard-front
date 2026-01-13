@@ -71,6 +71,7 @@
     "prepayment": "Маблағи пешпардохт",
     "prepaymentCurrency": "Асъори пешпардохт",
     "trucksCount": "Шумораи мошинҳо",
+    "priority": "Афзалият",
     "paymentType": "Усули пардохт",
     "loadingDate": "Санаи боргирӣ",
     "from": "Аз куҷо",
@@ -106,6 +107,12 @@
     "CASH": "Нақд",
     "CARD": "Корт",
     "TRANSFER": "Гузаронидан"
+  },
+  "priorities": {
+    "LOW": "Паст",
+    "MEDIUM": "Миёна",
+    "HIGH": "Баланд",
+    "URGENT": "Фаврӣ"
   },
   "loadStatus": {
     "OPEN": "Кушода",

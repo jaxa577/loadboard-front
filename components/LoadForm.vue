@@ -41,6 +41,9 @@
           <UFormGroup :label="$t('load.trucksCount')">
             <UInput v-model.number="formData.trucksCount" type="number" placeholder="1" min="1" />
           </UFormGroup>
+          <UFormGroup :label="$t('load.priority')">
+            <USelect v-model="formData.priority" :options="priorities" />
+          </UFormGroup>
         </div>
       </UCard>
 
@@ -183,6 +186,13 @@ const paymentTypes = computed(() => [
   { label: t('paymentTypes.TRANSFER'), value: 'TRANSFER' },
 ])
 
+const priorities = computed(() => [
+  { label: t('priorities.LOW'), value: 'LOW' },
+  { label: t('priorities.MEDIUM'), value: 'MEDIUM' },
+  { label: t('priorities.HIGH'), value: 'HIGH' },
+  { label: t('priorities.URGENT'), value: 'URGENT' },
+])
+
 const formData = ref({
   originCountry: (props.load as any)?.originCountry || 'Russia',
   originCity: (props.load as any)?.originCity || '',
@@ -198,6 +208,7 @@ const formData = ref({
   prepayment: (props.load as any)?.prepayment || undefined,
   prepaymentCurrency: (props.load as any)?.prepaymentCurrency || 'USD',
   trucksCount: (props.load as any)?.trucksCount || undefined,
+  priority: (props.load as any)?.priority || 'MEDIUM',
   paymentType: (props.load as any)?.paymentType || 'CASH',
   loadingDate: (props.load as any)?.loadingDate ? new Date((props.load as any).loadingDate).toISOString().split('T')[0] : '',
   contactPhone: (props.load as any)?.contactPhone || '',
@@ -244,6 +255,7 @@ const handleSubmit = () => {
     prepayment: formData.value.prepayment ? Number(formData.value.prepayment) : undefined,
     prepaymentCurrency: formData.value.prepayment ? formData.value.prepaymentCurrency : undefined,
     trucksCount: formData.value.trucksCount ? Number(formData.value.trucksCount) : undefined,
+    priority: formData.value.priority,
     paymentType: formData.value.paymentType,
     loadingDate: formData.value.loadingDate,
     contactPhone: formData.value.contactPhone || undefined,

@@ -71,6 +71,7 @@
     "prepayment": "Сумма предоплаты",
     "prepaymentCurrency": "Валюта предоплаты",
     "trucksCount": "Количество машин",
+    "priority": "Приоритет",
     "paymentType": "Способ оплаты",
     "loadingDate": "Дата загрузки",
     "from": "Откуда",
@@ -106,6 +107,12 @@
     "CASH": "Наличные",
     "CARD": "Карта",
     "TRANSFER": "Перевод"
+  },
+  "priorities": {
+    "LOW": "Низкий",
+    "MEDIUM": "Средний",
+    "HIGH": "Высокий",
+    "URGENT": "Срочный"
   },
   "loadStatus": {
     "OPEN": "Открыт",

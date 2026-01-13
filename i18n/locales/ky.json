@@ -71,6 +71,7 @@
     "prepayment": "Алдын ала төлөм суммасы",
     "prepaymentCurrency": "Алдын ала төлөм валютасы",
     "trucksCount": "Унааларынын саны",
+    "priority": "Артыкчылык",
     "paymentType": "Төлөм ыкмасы",
     "loadingDate": "Жүктөө датасы",
     "from": "Кайдан",
@@ -106,6 +107,12 @@
     "CASH": "Накталай",
     "CARD": "Карта",
     "TRANSFER": "Которуу"
+  },
+  "priorities": {
+    "LOW": "Төмөн",
+    "MEDIUM": "Орточо",
+    "HIGH": "Жогору",
+    "URGENT": "Шашылыш"
   },
   "loadStatus": {
     "OPEN": "Ачык",
