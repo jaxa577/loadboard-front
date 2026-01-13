@@ -52,6 +52,7 @@ export interface Load {
   deliveryDate?: string
   title?: string
   dimensions?: string
+  contactPhone?: string
 }
 
 export interface Message {

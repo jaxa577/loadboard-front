@@ -55,6 +55,9 @@
           <UFormGroup :label="$t('load.loadingDate')" required>
             <UInput v-model="formData.loadingDate" type="date" />
           </UFormGroup>
+          <UFormGroup :label="$t('load.contactPhone')">
+            <UInput v-model="formData.contactPhone" type="tel" placeholder="+7 (999) 123-45-67" />
+          </UFormGroup>
         </div>
       </UCard>
 
@@ -137,6 +140,7 @@ const formData = ref({
   price: (props.load as any)?.price || 0,
   paymentType: (props.load as any)?.paymentType || 'CASH',
   loadingDate: (props.load as any)?.loadingDate ? new Date((props.load as any).loadingDate).toISOString().split('T')[0] : '',
+  contactPhone: (props.load as any)?.contactPhone || '',
   photos: (props.load as any)?.photos || [],
   documents: (props.load as any)?.documents || [],
 })
@@ -172,8 +176,9 @@ const handleSubmit = () => {
     price: Number(formData.value.price),
     paymentType: formData.value.paymentType,
     loadingDate: formData.value.loadingDate,
-    photos: formData.value.photos,
-    documents: formData.value.documents,
+    contactPhone: formData.value.contactPhone || undefined,
+    // photos: formData.value.photos, // Temporarily disabled until Minio is ready
+    // documents: formData.value.documents, // Temporarily disabled until Minio is ready
   }
 
   emit('submit', loadData)
