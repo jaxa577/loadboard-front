@@ -38,6 +38,9 @@
           <UFormGroup :label="$t('load.volume')">
             <UInput v-model.number="formData.volume" type="number" placeholder="20" />
           </UFormGroup>
+          <UFormGroup :label="$t('load.trucksCount')">
+            <UInput v-model.number="formData.trucksCount" type="number" placeholder="1" min="1" />
+          </UFormGroup>
         </div>
       </UCard>
 
@@ -83,9 +86,6 @@
 
           <!-- Other fields -->
           <div class="grid md:grid-cols-2 gap-4">
-            <UFormGroup label="Number of Trucks (Optional)">
-              <UInput v-model.number="formData.trucksCount" type="number" placeholder="1" min="1" />
-            </UFormGroup>
             <UFormGroup :label="$t('load.paymentType')" required>
               <USelect v-model="formData.paymentType" :options="paymentTypes" />
             </UFormGroup>
