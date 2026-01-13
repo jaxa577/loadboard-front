@@ -5,7 +5,6 @@
       type="text"
       placeholder="Введите сообщение..."
       class="input flex-1"
-      @keyup.enter="sendMessage"
     />
     <button
       type="submit"
