@@ -230,7 +230,14 @@
     "maxWeight": "Maks. og'irligi (kg)",
     "allTruckTypes": "Barcha transport turlari",
     "allStatuses": "Barcha holatlar",
-    "clear": "Filtrlarni tozalash"
+    "clear": "Filtrlarni tozalash",
+    "filters": "Filtrlar",
+    "filtersActive": "Filtrlar",
+    "advancedFilters": "Kengaytirilgan filtrlar"
+  },
+  "view": {
+    "grid": "Tarmoq",
+    "list": "Ro'yxat"
   },
   "landing": {
     "hero": {

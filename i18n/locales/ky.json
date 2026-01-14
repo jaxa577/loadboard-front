@@ -230,7 +230,14 @@
     "maxWeight": "Макс. салмагы (кг)",
     "allTruckTypes": "Бардык унаа түрлөрү",
     "allStatuses": "Бардык абалдар",
-    "clear": "Чыпкаларды тазалоо"
+    "clear": "Чыпкаларды тазалоо",
+    "filters": "Чыпкалар",
+    "filtersActive": "Чыпкалар",
+    "advancedFilters": "Кеңейтилген чыпкалар"
+  },
+  "view": {
+    "grid": "Тор",
+    "list": "Тизме"
   },
   "landing": {
     "hero": {

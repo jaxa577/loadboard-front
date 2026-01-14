@@ -230,7 +230,14 @@
     "maxWeight": "Max. weight (kg)",
     "allTruckTypes": "All truck types",
     "allStatuses": "All statuses",
-    "clear": "Clear filters"
+    "clear": "Clear filters",
+    "filters": "Filters",
+    "filtersActive": "Filters",
+    "advancedFilters": "Advanced Filters"
+  },
+  "view": {
+    "grid": "Grid view",
+    "list": "List view"
   },
   "landing": {
     "hero": {

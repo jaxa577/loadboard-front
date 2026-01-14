@@ -230,7 +230,14 @@
     "maxWeight": "Макс. салмағы (кг)",
     "allTruckTypes": "Барлық көлік түрлері",
     "allStatuses": "Барлық күйлер",
-    "clear": "Сүзгілерді тазалау"
+    "clear": "Сүзгілерді тазалау",
+    "filters": "Сүзгілер",
+    "filtersActive": "Сүзгілер",
+    "advancedFilters": "Кеңейтілген сүзгілер"
+  },
+  "view": {
+    "grid": "Тор",
+    "list": "Тізім"
   },
   "landing": {
     "hero": {

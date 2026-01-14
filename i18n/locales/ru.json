@@ -230,7 +230,14 @@
     "maxWeight": "Макс. вес (кг)",
     "allTruckTypes": "Все типы транспорта",
     "allStatuses": "Все статусы",
-    "clear": "Сбросить фильтры"
+    "clear": "Сбросить фильтры",
+    "filters": "Фильтры",
+    "filtersActive": "Фильтры",
+    "advancedFilters": "Расширенные фильтры"
+  },
+  "view": {
+    "grid": "Сетка",
+    "list": "Список"
   },
   "landing": {
     "test": "TTest",

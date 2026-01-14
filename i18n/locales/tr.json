@@ -230,7 +230,14 @@
     "maxWeight": "Maks. ağırlık (kg)",
     "allTruckTypes": "Tüm araç türleri",
     "allStatuses": "Tüm durumlar",
-    "clear": "Filtreleri temizle"
+    "clear": "Filtreleri temizle",
+    "filters": "Filtreler",
+    "filtersActive": "Filtreler",
+    "advancedFilters": "Gelişmiş Filtreler"
+  },
+  "view": {
+    "grid": "Izgara görünümü",
+    "list": "Liste görünümü"
   },
   "landing": {
     "hero": {

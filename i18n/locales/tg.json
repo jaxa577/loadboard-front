@@ -230,7 +230,14 @@
     "maxWeight": "Вазни ҳадди аксар (кг)",
     "allTruckTypes": "Ҳамаи намудҳои мошин",
     "allStatuses": "Ҳамаи ҳолатҳо",
-    "clear": "Филтрҳоро тоза кунед"
+    "clear": "Филтрҳоро тоза кунед",
+    "filters": "Филтрҳо",
+    "filtersActive": "Филтрҳо",
+    "advancedFilters": "Филтрҳои пешрафта"
+  },
+  "view": {
+    "grid": "Шабака",
+    "list": "Рӯйхат"
   },
   "landing": {
     "hero": {
