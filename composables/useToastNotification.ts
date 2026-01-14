@@ -1,22 +1,31 @@
-import VueToastification from 'vue-toastification'
-
 export const useToastNotification = () => {
-  const toast = VueToastification.useToast()
+  // Dynamically import useToast to ensure it's only used on client side
+  let toast: any = null
+
+  if (process.client) {
+    try {
+      // Import the useToast function from vue-toastification
+      const { useToast } = require('vue-toastification')
+      toast = useToast()
+    } catch (e) {
+      console.error('Failed to initialize toast:', e)
+    }
+  }
 
   const success = (message: string) => {
-    toast.success(message)
+    if (toast) toast.success(message)
   }
 
   const error = (message: string) => {
-    toast.error(message)
+    if (toast) toast.error(message)
   }
 
   const warning = (message: string) => {
-    toast.warning(message)
+    if (toast) toast.warning(message)
   }
 
   const info = (message: string) => {
-    toast.info(message)
+    if (toast) toast.info(message)
   }
 
   /**
