@@ -73,7 +73,24 @@ const authStore = useAuthStore()
 const loadsStore = useLoadsStore()
 
 const loading = ref(true)
-const viewMode = ref<'grid' | 'list'>('grid')
+
+// Load view mode from localStorage or default to 'grid'
+const getInitialViewMode = (): 'grid' | 'list' => {
+  if (process.client) {
+    const saved = localStorage.getItem('loadsViewMode')
+    return (saved === 'list' || saved === 'grid') ? saved : 'grid'
+  }
+  return 'grid'
+}
+
+const viewMode = ref<'grid' | 'list'>(getInitialViewMode())
+
+// Watch for changes and save to localStorage
+watch(viewMode, (newMode) => {
+  if (process.client) {
+    localStorage.setItem('loadsViewMode', newMode)
+  }
+})
 
 onMounted(async () => {
   try {
