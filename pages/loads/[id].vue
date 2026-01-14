@@ -12,9 +12,15 @@
       <div class="card mb-6">
         <div class="flex flex-col sm:flex-row items-start justify-between gap-4 mb-6">
           <div class="flex-1">
-            <h1 class="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-2 break-words">
-              {{ load.originCity }}, {{ $t(`countries.${load.originCountry}`) }} → {{ load.destinationCity }}, {{ $t(`countries.${load.destinationCountry}`) }}
-            </h1>
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <h1 class="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white break-words">
+                {{ load.originCity }}, {{ $t(`countries.${load.originCountry}`) }} → {{ load.destinationCity }}, {{ $t(`countries.${load.destinationCountry}`) }}
+              </h1>
+              <span v-if="load.priority" :class="getPriorityBadgeClass(load.priority)" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-sm font-medium whitespace-nowrap flex-shrink-0">
+                <component :is="getPriorityIcon(load.priority)" class="w-4 h-4" />
+                {{ getPriorityLabel(load.priority) }}
+              </span>
+            </div>
             <div class="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
               <span>{{ getTruckTypeLabel(load.truckType) }}</span>
               <span>{{ getPaymentTypeLabel(load.paymentType) }}</span>
@@ -139,6 +145,45 @@ const getTruckTypeLabel = (truckType: string) => {
 
 const getPaymentTypeLabel = (paymentType: string) => {
   return t(`paymentTypes.${paymentType}`)
+}
+
+const getPriorityLabel = (priority: string) => {
+  return t(`priorities.${priority}`)
+}
+
+const getPriorityBadgeClass = (priority: string) => {
+  switch (priority) {
+    case 'LOW':
+      return 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300'
+    case 'MEDIUM':
+      return 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300'
+    case 'HIGH':
+      return 'bg-orange-100 text-orange-700 dark:bg-orange-900 dark:text-orange-300'
+    case 'URGENT':
+      return 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300'
+    default:
+      return 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300'
+  }
+}
+
+const getPriorityIcon = (priority: string) => {
+  return h('svg', {
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 2,
+    viewBox: '0 0 24 24',
+    xmlns: 'http://www.w3.org/2000/svg'
+  }, [
+    h('path', {
+      strokeLinecap: 'round',
+      strokeLinejoin: 'round',
+      d: priority === 'LOW'
+        ? 'M19 14l-7 7m0 0l-7-7m7 7V3' // Down arrow for LOW
+        : priority === 'URGENT'
+        ? 'M13 10V3L4 14h7v7l9-11h-7z' // Lightning bolt for URGENT
+        : 'M5 10l7-7m0 0l7 7m-7-7v18' // Up arrow for MEDIUM and HIGH
+    })
+  ])
 }
 
 const refreshLoad = async () => {
