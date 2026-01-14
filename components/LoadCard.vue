@@ -62,27 +62,29 @@
 
     <!-- Grid View (Original) -->
     <div v-else>
-      <div class="flex flex-col sm:flex-row items-start justify-between gap-3 sm:gap-4 mb-4">
-        <div class="flex-1 w-full sm:w-auto">
-          <div class="flex items-start gap-2 mb-1">
-            <h3 class="text-base sm:text-lg lg:text-xl font-semibold text-gray-900 dark:text-white break-words">
+      <div class="flex flex-col gap-3 mb-4">
+        <div class="flex items-start justify-between gap-3">
+          <div class="flex-1 min-w-0">
+            <h3 class="text-sm sm:text-base font-semibold text-gray-900 dark:text-white mb-1 line-clamp-2">
               {{ load.originCity }}, {{ load.originCountry }} → {{ load.destinationCity }}, {{ load.destinationCountry }}
             </h3>
-            <span v-if="load.priority" :class="getPriorityBadgeClass(load.priority)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium whitespace-nowrap flex-shrink-0">
-              <component :is="getPriorityIcon(load.priority)" class="w-3 h-3" />
-              {{ getPriorityLabel(load.priority) }}
-            </span>
+            <p class="text-xs text-gray-500 dark:text-gray-400">
+              {{ getTruckTypeLabel(load.truckType) }}
+            </p>
           </div>
-          <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
-            {{ getTruckTypeLabel(load.truckType) }}
-          </p>
+          <div class="flex-shrink-0 text-right">
+            <div class="text-lg sm:text-xl font-bold text-primary-600 dark:text-primary-400 whitespace-nowrap">
+              <span v-if="load.negotiablePrice">Negotiable</span>
+              <span v-else>{{ formatPrice(load.price, load.currency) }}</span>
+            </div>
+            <div class="text-xs text-gray-500 dark:text-gray-400">{{ getPaymentTypeLabel(load.paymentType) }}</div>
+          </div>
         </div>
-        <div class="text-left sm:text-right w-full sm:w-auto">
-          <div class="text-xl sm:text-2xl font-bold text-primary-600 dark:text-primary-400">
-            <span v-if="load.negotiablePrice">Negotiable</span>
-            <span v-else>{{ formatPrice(load.price, load.currency) }}</span>
-          </div>
-          <div class="text-xs text-gray-500 dark:text-gray-400">{{ getPaymentTypeLabel(load.paymentType) }}</div>
+        <div v-if="load.priority" class="flex items-center gap-2">
+          <span :class="getPriorityBadgeClass(load.priority)" class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium whitespace-nowrap">
+            <component :is="getPriorityIcon(load.priority)" class="w-3 h-3" />
+            {{ getPriorityLabel(load.priority) }}
+          </span>
         </div>
       </div>
 
