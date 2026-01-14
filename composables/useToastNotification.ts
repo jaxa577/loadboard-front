@@ -1,7 +1,7 @@
-import { useToast as useToastification } from 'vue-toastification'
+import VueToastification from 'vue-toastification'
 
 export const useToastNotification = () => {
-  const toast = useToastification()
+  const toast = VueToastification.useToast()
 
   const success = (message: string) => {
     toast.success(message)
