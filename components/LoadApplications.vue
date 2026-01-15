@@ -56,29 +56,32 @@
             </div>
           </div>
 
-          <div v-if="canManageApplications && app.status === 'PENDING'" class="flex items-center space-x-2 ml-4">
-            <UButton
-              color="green"
-              size="sm"
-              @click="handleAccept(app.id)"
-              :loading="actionLoading === app.id"
-            >
-              {{ $t('application.accept') }}
-            </UButton>
-            <UButton
-              color="red"
-              variant="outline"
-              size="sm"
-              @click="handleReject(app.id)"
-              :loading="actionLoading === app.id"
-            >
-              {{ $t('application.reject') }}
-            </UButton>
-          </div>
+          <div class="flex items-center space-x-2 ml-4">
+            <!-- Accept/Reject buttons for PENDING applications -->
+            <template v-if="canManageApplications && app.status === 'PENDING'">
+              <UButton
+                color="green"
+                size="sm"
+                @click="handleAccept(app.id)"
+                :loading="actionLoading === app.id"
+              >
+                {{ $t('application.accept') }}
+              </UButton>
+              <UButton
+                color="red"
+                variant="outline"
+                size="sm"
+                @click="handleReject(app.id)"
+                :loading="actionLoading === app.id"
+              >
+                {{ $t('application.reject') }}
+              </UButton>
+            </template>
 
-          <div v-else-if="app.status === 'ACCEPTED'" class="ml-4">
+            <!-- Chat button available for ALL statuses -->
             <UButton
-              color="primary"
+              :color="app.status === 'ACCEPTED' ? 'primary' : 'gray'"
+              :variant="app.status === 'ACCEPTED' ? 'solid' : 'outline'"
               size="sm"
               @click="handleOpenChat(app.applicantId)"
             >

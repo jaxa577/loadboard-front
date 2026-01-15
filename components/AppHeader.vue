@@ -16,6 +16,13 @@
           </NuxtLink>
           <NuxtLink
             v-if="authStore.isAuthenticated"
+            to="/responses"
+            class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+          >
+            {{ $t('nav.applications') }}
+          </NuxtLink>
+          <NuxtLink
+            v-if="authStore.isAuthenticated"
             to="/chat"
             class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
           >
