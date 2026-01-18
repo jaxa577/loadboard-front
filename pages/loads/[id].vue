@@ -88,6 +88,19 @@
         </div>
 
         <ActionButtons :load="load" @load-updated="refreshLoad" />
+
+        <!-- Track Load Button -->
+        <div v-if="canTrackLoad" class="mt-4">
+          <UButton
+            color="primary"
+            size="lg"
+            block
+            icon="i-heroicons-map-pin"
+            @click="navigateTo(`/loads/${load.id}/tracking`)"
+          >
+            Track Load in Real-Time
+          </UButton>
+        </div>
       </div>
 
       <PhotoGallery v-if="load.photos && load.photos.length > 0" :photos="load.photos" />
@@ -121,6 +134,17 @@ const canViewApplications = computed(() => {
 
 const canManageApplications = computed(() => {
   return canViewApplications.value
+})
+
+const canTrackLoad = computed(() => {
+  if (!load.value || !authStore.currentUser) return false
+  // Only shippers and brokers can track loads they own
+  // and only if the load has an accepted application (IN_PROGRESS status)
+  return (
+    (authStore.isShipper || authStore.isBroker) &&
+    load.value.shipperId === authStore.currentUser.id &&
+    load.value.status === 'IN_PROGRESS'
+  )
 })
 
 const formatPrice = (price: number) => {
