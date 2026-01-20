@@ -14,7 +14,8 @@
     "confirm": "Подтвердить",
     "yes": "Да",
     "no": "Нет",
-    "role": "Роль"
+    "role": "Роль",
+    "archive": "Архивировать"
   },
   "nav": {
     "home": "Главная",
@@ -94,7 +95,15 @@
     "uploadPhotos": "Загрузить фотографии груза",
     "documents": "Документы",
     "uploadDocuments": "Загрузить документы",
-    "priceOrNegotiable": "Пожалуйста, укажите цену или отметьте как договорную"
+    "priceOrNegotiable": "Пожалуйста, укажите цену или отметьте как договорную",
+    "archiveConfirmTitle": "Архивировать груз",
+    "archiveConfirmMessage": "Вы уверены, что хотите архивировать этот груз? Он больше не будет виден водителям.",
+    "archiveSuccess": "Груз успешно архивирован",
+    "archiveError": "Ошибка архивирования груза",
+    "deleteConfirmTitle": "Удалить груз",
+    "deleteConfirmMessage": "Вы уверены, что хотите удалить этот груз? Это действие нельзя отменить.",
+    "deleteSuccess": "Груз успешно удален",
+    "deleteError": "Ошибка удаления груза"
   },
   "truckTypes": {
     "TENT": "Тент",
@@ -118,7 +127,8 @@
     "OPEN": "Открыт",
     "IN_PROGRESS": "В пути",
     "COMPLETED": "Завершен",
-    "CANCELLED": "Отменен"
+    "CANCELLED": "Отменен",
+    "ARCHIVED": "Архивирован"
   },
   "countries": {
     "Russia": "Россия",

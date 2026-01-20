@@ -14,7 +14,8 @@
     "confirm": "Confirm",
     "yes": "Yes",
     "no": "No",
-    "role": "Role"
+    "role": "Role",
+    "archive": "Archive"
   },
   "nav": {
     "home": "Home",
@@ -94,7 +95,15 @@
     "uploadPhotos": "Upload Load Photos",
     "documents": "Documents",
     "uploadDocuments": "Upload Documents",
-    "priceOrNegotiable": "Please specify price or mark it as negotiable"
+    "priceOrNegotiable": "Please specify price or mark it as negotiable",
+    "archiveConfirmTitle": "Archive Load",
+    "archiveConfirmMessage": "Are you sure you want to archive this load? It will no longer be visible to drivers.",
+    "archiveSuccess": "Load archived successfully",
+    "archiveError": "Error archiving load",
+    "deleteConfirmTitle": "Delete Load",
+    "deleteConfirmMessage": "Are you sure you want to delete this load? This action cannot be undone.",
+    "deleteSuccess": "Load deleted successfully",
+    "deleteError": "Error deleting load"
   },
   "truckTypes": {
     "TENT": "Tent",
@@ -118,7 +127,8 @@
     "OPEN": "Open",
     "IN_PROGRESS": "In Progress",
     "COMPLETED": "Completed",
-    "CANCELLED": "Cancelled"
+    "CANCELLED": "Cancelled",
+    "ARCHIVED": "Archived"
   },
   "countries": {
     "Russia": "Russia",

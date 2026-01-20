@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center space-x-4">
+  <div class="flex flex-wrap items-center gap-3">
     <UButton
       v-if="authStore.isDriver && load.status === 'OPEN' && !hasApplied"
       color="primary"
@@ -17,13 +17,73 @@
       {{ $t('load.alreadyApplied') }}
     </UButton>
     <UButton
-      v-if="authStore.isShipper && load.shipperId === authStore.currentUser?.id"
+      v-if="canManageLoad"
       color="gray"
       variant="outline"
       @click="editLoad"
     >
       {{ $t('common.edit') }}
     </UButton>
+    <UButton
+      v-if="canManageLoad && load.status !== 'ARCHIVED'"
+      color="blue"
+      variant="outline"
+      icon="i-heroicons-archive-box"
+      @click="showArchiveModal = true"
+      :loading="archiving"
+    >
+      {{ $t('common.archive') }}
+    </UButton>
+    <UButton
+      v-if="canManageLoad"
+      color="red"
+      variant="outline"
+      icon="i-heroicons-trash"
+      @click="showDeleteModal = true"
+      :loading="deleting"
+    >
+      {{ $t('common.delete') }}
+    </UButton>
+
+    <!-- Archive Confirmation Modal -->
+    <UModal v-model="showArchiveModal">
+      <UCard>
+        <template #header>
+          <h3 class="text-lg font-semibold">{{ $t('load.archiveConfirmTitle') }}</h3>
+        </template>
+        <p class="text-gray-600 dark:text-gray-400">{{ $t('load.archiveConfirmMessage') }}</p>
+        <template #footer>
+          <div class="flex justify-end gap-3">
+            <UButton color="gray" variant="ghost" @click="showArchiveModal = false">
+              {{ $t('common.cancel') }}
+            </UButton>
+            <UButton color="blue" @click="archiveLoad" :loading="archiving">
+              {{ $t('common.archive') }}
+            </UButton>
+          </div>
+        </template>
+      </UCard>
+    </UModal>
+
+    <!-- Delete Confirmation Modal -->
+    <UModal v-model="showDeleteModal">
+      <UCard>
+        <template #header>
+          <h3 class="text-lg font-semibold">{{ $t('load.deleteConfirmTitle') }}</h3>
+        </template>
+        <p class="text-gray-600 dark:text-gray-400">{{ $t('load.deleteConfirmMessage') }}</p>
+        <template #footer>
+          <div class="flex justify-end gap-3">
+            <UButton color="gray" variant="ghost" @click="showDeleteModal = false">
+              {{ $t('common.cancel') }}
+            </UButton>
+            <UButton color="red" @click="deleteLoad" :loading="deleting">
+              {{ $t('common.delete') }}
+            </UButton>
+          </div>
+        </template>
+      </UCard>
+    </UModal>
   </div>
 </template>
 
@@ -44,6 +104,16 @@ const router = useRouter()
 const { t } = useI18n()
 const toast = useToastNotification()
 const loading = ref(false)
+const archiving = ref(false)
+const deleting = ref(false)
+const showArchiveModal = ref(false)
+const showDeleteModal = ref(false)
+
+// Check if current user can manage this load
+const canManageLoad = computed(() => {
+  if (!authStore.currentUser) return false
+  return (authStore.isShipper || authStore.isBroker) && props.load.shipperId === authStore.currentUser.id
+})
 
 // Check if current user has already applied to this load
 const hasApplied = computed(() => {
@@ -71,6 +141,35 @@ const applyToLoad = async () => {
 
 const editLoad = () => {
   router.push(`/create-load?id=${props.load.id}`)
+}
+
+const archiveLoad = async () => {
+  archiving.value = true
+  try {
+    await loadsStore.archiveLoad(props.load.id)
+    toast.success(t('load.archiveSuccess'))
+    showArchiveModal.value = false
+    emit('loadUpdated')
+  } catch (error) {
+    toast.handleApiError(error, t('load.archiveError'))
+  } finally {
+    archiving.value = false
+  }
+}
+
+const deleteLoad = async () => {
+  deleting.value = true
+  try {
+    await loadsStore.deleteLoad(props.load.id)
+    toast.success(t('load.deleteSuccess'))
+    showDeleteModal.value = false
+    // Navigate back to loads list
+    router.push('/loads')
+  } catch (error) {
+    toast.handleApiError(error, t('load.deleteError'))
+  } finally {
+    deleting.value = false
+  }
 }
 </script>
 

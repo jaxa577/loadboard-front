@@ -22,8 +22,12 @@
               </span>
             </div>
             <div class="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+              <span v-if="load.displayId" class="font-mono font-semibold text-primary-600 dark:text-primary-400">
+                ID: {{ load.displayId }}
+              </span>
               <span>{{ getTruckTypeLabel(load.truckType) }}</span>
               <span>{{ getPaymentTypeLabel(load.paymentType) }}</span>
+              <span>{{ formatDate(load.createdAt) }}</span>
             </div>
           </div>
           <div class="text-left sm:text-right w-full sm:w-auto">

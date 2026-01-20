@@ -27,7 +27,14 @@
             @close="error = ''"
           />
 
-          <UButton type="submit" color="primary" :loading="loading" block>
+          <UButton
+            type="submit"
+            color="primary"
+            :loading="loading"
+            block
+            size="xl"
+            class="py-4 text-lg font-semibold"
+          >
             {{ $t('auth.login') }}
           </UButton>
         </div>

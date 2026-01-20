@@ -23,6 +23,7 @@ export interface User {
 
 export interface Load {
   id: string
+  displayId?: string
   shipperId: string
   brokerId?: string
   driverId?: string
@@ -43,7 +44,7 @@ export interface Load {
   currency: string
   distance: number
   urgent: boolean
-  status: 'active' | 'assigned' | 'in_transit' | 'completed' | 'cancelled'
+  status: 'active' | 'assigned' | 'in_transit' | 'completed' | 'cancelled' | 'archived'
   description?: string
   documents?: string[]
   photos?: string[]

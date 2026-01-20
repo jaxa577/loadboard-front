@@ -238,6 +238,39 @@ export const useLoadsStore = defineStore('loads', {
       }
     },
 
+    async archiveLoad(id: string) {
+      try {
+        const config = useRuntimeConfig()
+        const apiBase = config.public.apiBase || 'https://clb-back-production.up.railway.app/api/v1'
+        const authStore = useAuthStore()
+        const token = authStore.token || (process.client ? localStorage.getItem('token') : null)
+
+        if (!token) {
+          throw new Error('Not authenticated')
+        }
+
+        const load = await $fetch<Load>(`${apiBase}/loads/${id}/archive`, {
+          method: 'PATCH',
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+
+        const index = this.loads.findIndex((l: any) => l.id === id)
+        if (index !== -1) {
+          this.loads[index] = load
+        }
+        if (this.currentLoad?.id === id) {
+          this.currentLoad = load
+        }
+
+        return load
+      } catch (error: any) {
+        console.error('Error archiving load:', error)
+        throw error
+      }
+    },
+
     async applyToLoad(loadId: string, role?: string) {
       try {
         const config = useRuntimeConfig()
