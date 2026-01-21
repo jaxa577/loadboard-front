@@ -67,6 +67,7 @@ const baseLinks = computed(() => [
   { label: t('nav.profile'), to: '/profile', icon: 'heroicons:user' },
   { label: t('nav.applications'), to: '/responses', icon: 'heroicons:inbox' },
   { label: t('nav.loads'), to: '/loads', icon: 'heroicons:rectangle-stack' },
+  { label: t('nav.tracking'), to: '/tracking', icon: 'heroicons:map-pin' },
   { label: t('nav.messages'), to: '/chat', icon: 'heroicons:chat-bubble-left-right' },
 ])
 
@@ -80,6 +81,7 @@ const roleLinksMap = computed(() => ({
     { label: t('nav.createLoad'), to: '/create-load', icon: 'heroicons:plus-circle' },
     { label: t('nav.myLoads'), to: '/loads', icon: 'heroicons:cube' },
     { label: t('nav.applications'), to: '/responses', icon: 'heroicons:inbox' },
+    { label: t('nav.tracking'), to: '/tracking', icon: 'heroicons:map-pin' },
     { label: t('nav.messages'), to: '/chat', icon: 'heroicons:chat-bubble-left-right' },
   ],
 }))

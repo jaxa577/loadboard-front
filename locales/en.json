@@ -23,6 +23,7 @@
     "createLoad": "Create Load",
     "applications": "Applications",
     "deals": "Deals",
+    "tracking": "Tracking",
     "messages": "Messages",
     "profile": "Profile",
     "admin": "Admin Panel",
@@ -159,6 +160,14 @@
     "active": "Active",
     "completed": "Completed",
     "disputed": "Disputed"
+  },
+  "tracking": {
+    "title": "Live Tracking",
+    "description": "Monitor active deliveries in real-time",
+    "noActiveJourneys": "No active journeys at the moment",
+    "active": "Active",
+    "started": "Started",
+    "selectJourney": "Select a journey to view on map"
   },
   "validation": {
     "required": "Please fill all required fields",
