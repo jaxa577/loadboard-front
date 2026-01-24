@@ -131,8 +131,10 @@
       </UCard>
 
       <div class="flex items-center justify-end space-x-3">
-        <UButton color="gray" variant="outline" to="/loads">{{ $t('common.cancel') }}</UButton>
-        <UButton type="submit" color="primary">{{ props.load ? $t('common.save') : $t('common.create') }}</UButton>
+        <UButton color="gray" variant="outline" to="/loads" :disabled="isSubmitting">{{ $t('common.cancel') }}</UButton>
+        <UButton type="submit" color="primary" :disabled="isSubmitting" :loading="isSubmitting">
+          {{ props.load ? $t('common.save') : $t('common.create') }}
+        </UButton>
       </div>
     </div>
   </UForm>
@@ -216,7 +218,13 @@ const formData = ref({
   documents: (props.load as any)?.documents || [],
 })
 
+const isSubmitting = ref(false)
+
 const handleSubmit = () => {
+  // Prevent double submission
+  if (isSubmitting.value) {
+    return
+  }
   // Validation
   if (!formData.value.originCountry || !formData.value.originCity ||
       !formData.value.destinationCountry || !formData.value.destinationCity) {
@@ -238,6 +246,9 @@ const handleSubmit = () => {
     toast.warning(t('validation.selectLoadingDate'))
     return
   }
+
+  // Set submitting flag
+  isSubmitting.value = true
 
   // Convert to backend format
   const loadData = {
@@ -264,5 +275,10 @@ const handleSubmit = () => {
   }
 
   emit('submit', loadData)
+
+  // Reset flag after a delay to allow for navigation
+  setTimeout(() => {
+    isSubmitting.value = false
+  }, 2000)
 }
 </script>
