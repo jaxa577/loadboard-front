@@ -51,6 +51,12 @@
     "admin": "Administrator"
   },
   "load": {
+    "myLoads": "My Loads",
+    "activeLoads": "Active Loads",
+    "archivedLoads": "Archived Loads",
+    "noActiveLoads": "No active loads found",
+    "noArchivedLoads": "No archived loads found",
+    "archiveLoad": "Archive Load",
     "title": "Load",
     "loads": "Loads",
     "createLoad": "Create Load",

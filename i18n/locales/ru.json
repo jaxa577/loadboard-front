@@ -51,6 +51,12 @@
     "admin": "Администратор"
   },
   "load": {
+    "myLoads": "Мои грузы",
+    "activeLoads": "Активные грузы",
+    "archivedLoads": "Архивные грузы",
+    "noActiveLoads": "Активных грузов не найдено",
+    "noArchivedLoads": "Архивных грузов не найдено",
+    "archiveLoad": "Архивировать груз",
     "title": "Груз",
     "loads": "Грузы",
     "createLoad": "Создать груз",

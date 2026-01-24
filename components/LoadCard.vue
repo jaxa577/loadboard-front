@@ -1,8 +1,10 @@
 <template>
-  <NuxtLink :to="`/loads/${load.id}`" :class="[
-    'card hover:shadow-lg transition-shadow duration-300 block',
-    viewMode === 'list' ? 'p-4 sm:p-6' : ''
+  <div :class="[
+    'card transition-shadow duration-300 relative',
+    viewMode === 'list' ? 'p-4 sm:p-6' : '',
+    !showArchiveButton && 'hover:shadow-lg'
   ]">
+    <NuxtLink :to="`/loads/${load.id}`" class="block">
     <div v-if="viewMode === 'list'" class="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
       <!-- Left: Route and Info -->
       <div class="flex-1 min-w-0">
@@ -114,16 +116,39 @@
         <span>{{ getStatusLabel(load.status) }}</span>
       </div>
     </div>
-  </NuxtLink>
+    </NuxtLink>
+
+    <!-- Archive Button -->
+    <div v-if="showArchiveButton" class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+      <button
+        @click.prevent="handleArchive"
+        class="w-full px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors flex items-center justify-center gap-2"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+        </svg>
+        {{ $t('loads.archiveLoad') }}
+      </button>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
 import type { Load } from '~/types'
 
-defineProps<{
+const props = defineProps<{
   load: Load
   viewMode?: 'grid' | 'list'
+  showArchiveButton?: boolean
 }>()
+
+const emit = defineEmits<{
+  archive: [loadId: string]
+}>()
+
+const handleArchive = () => {
+  emit('archive', props.load.id)
+}
 
 const { t, locale } = useI18n()
 

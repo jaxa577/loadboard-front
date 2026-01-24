@@ -195,5 +195,21 @@ export const useApi = () => {
         return handleResponse(response);
       },
     },
+
+    // Journeys endpoints
+    journeys: {
+      getActiveWithLoads: async () => {
+        const response = await fetch(`${apiBase}/journeys/tracking/active`, {
+          headers: getAuthHeaders(),
+        });
+        return handleResponse(response);
+      },
+      getLocations: async (journeyId: string) => {
+        const response = await fetch(`${apiBase}/journeys/${journeyId}/locations`, {
+          headers: getAuthHeaders(),
+        });
+        return handleResponse(response);
+      },
+    },
   };
 };

@@ -1,12 +1,29 @@
 <template>
   <div>
     <div class="mb-6">
-      <h1 class="text-3xl font-bold text-gray-900 dark:text-white">
-        {{ $t('tracking.title') }}
-      </h1>
-      <p class="text-gray-600 dark:text-gray-400 mt-2">
-        {{ $t('tracking.description') }}
-      </p>
+      <div class="flex items-center justify-between">
+        <div>
+          <h1 class="text-3xl font-bold text-gray-900 dark:text-white">
+            {{ $t('tracking.title') }}
+          </h1>
+          <p class="text-gray-600 dark:text-gray-400 mt-2">
+            {{ $t('tracking.description') }}
+          </p>
+        </div>
+
+        <!-- WebSocket Status Indicator -->
+        <div class="flex items-center gap-2 px-3 py-2 rounded-lg" :class="ws.connected.value ? 'bg-green-50 dark:bg-green-900/20' : 'bg-gray-50 dark:bg-gray-800'">
+          <div class="flex items-center gap-2">
+            <div
+              class="w-2 h-2 rounded-full"
+              :class="ws.connected.value ? 'bg-green-500 animate-pulse' : 'bg-gray-400'"
+            ></div>
+            <span class="text-sm font-medium" :class="ws.connected.value ? 'text-green-700 dark:text-green-300' : 'text-gray-600 dark:text-gray-400'">
+              {{ ws.connected.value ? 'Live' : 'Offline' }}
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div v-if="loading" class="flex justify-center items-center h-96">
@@ -82,9 +99,21 @@
       <!-- Map -->
       <UCard>
         <div v-if="selectedJourney" class="h-[600px] relative">
-          <div ref="mapContainer" class="w-full h-full rounded-lg overflow-hidden"></div>
+          <!-- Check if coordinates are available -->
+          <div v-if="!selectedJourney.load?.originLatitude || !selectedJourney.load?.destinationLatitude" class="h-full flex items-center justify-center text-gray-500">
+            <div class="text-center">
+              <Icon name="heroicons:exclamation-triangle" class="w-16 h-16 mx-auto mb-4 text-yellow-500" />
+              <p class="font-semibold">No coordinates available</p>
+              <p class="text-sm mt-2">This load doesn't have origin/destination coordinates.</p>
+              <p class="text-sm text-gray-400 mt-1">Coordinates are required to display the route on map.</p>
+            </div>
+          </div>
 
-          <div class="absolute top-4 left-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 max-w-xs">
+          <!-- Map Container -->
+          <div v-else ref="mapContainer" class="w-full h-full rounded-lg overflow-hidden"></div>
+
+          <!-- Journey Info Overlay (only show if map is visible) -->
+          <div v-if="selectedJourney.load?.originLatitude && selectedJourney.load?.destinationLatitude" class="absolute top-4 left-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 max-w-xs">
             <h3 class="font-semibold text-gray-900 dark:text-white mb-2">
               {{ selectedJourney.load?.originCity }} → {{ selectedJourney.load?.destinationCity }}
             </h3>
@@ -120,12 +149,12 @@ import mapboxgl from 'mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
 
 definePageMeta({
-  layout: 'app',
-  middleware: 'auth'
+  layout: 'app'
 })
 
-const { $api } = useNuxtApp()
+const api = useApi()
 const { t } = useI18n()
+const ws = useWebSocket()
 
 interface Journey {
   id: string
@@ -161,15 +190,20 @@ const fetchActiveJourneys = async () => {
   try {
     loading.value = true
     error.value = null
-    const response = await $api<Journey[]>('/journeys/tracking/active')
+    const response = await api.journeys.getActiveWithLoads()
     activeJourneys.value = response
+
+    console.log('Active journeys fetched:', response.length)
+    if (response.length > 0) {
+      console.log('First journey:', response[0])
+    }
 
     // Auto-select first journey if available
     if (activeJourneys.value.length > 0 && !selectedJourney.value) {
       selectJourney(activeJourneys.value[0])
     }
   } catch (err: any) {
-    error.value = err.response?.data?.message || t('errors.loadError')
+    error.value = err.message || t('errors.loadError')
     console.error('Error fetching active journeys:', err)
   } finally {
     loading.value = false
@@ -177,14 +211,28 @@ const fetchActiveJourneys = async () => {
 }
 
 const selectJourney = (journey: Journey) => {
+  // Leave previous journey room
+  if (selectedJourney.value && ws.connected.value) {
+    ws.leaveJourney(selectedJourney.value.id)
+  }
+
   selectedJourney.value = journey
+
+  // Join new journey room for real-time updates
+  if (ws.connected.value) {
+    ws.joinJourney(journey.id)
+  }
+
   nextTick(() => {
     initializeMap()
   })
 }
 
 const initializeMap = () => {
-  if (!mapContainer.value || !selectedJourney.value) return
+  if (!mapContainer.value || !selectedJourney.value) {
+    console.log('Map initialization skipped: missing container or journey')
+    return
+  }
 
   // Destroy existing map
   if (map) {
@@ -195,7 +243,14 @@ const initializeMap = () => {
   const journey = selectedJourney.value
   const load = journey.load
 
+  console.log('Initializing map for journey:', journey.id)
+  console.log('Load coordinates:', {
+    origin: [load?.originLatitude, load?.originLongitude],
+    destination: [load?.destinationLatitude, load?.destinationLongitude]
+  })
+
   if (!load?.originLatitude || !load?.originLongitude || !load?.destinationLatitude || !load?.destinationLongitude) {
+    console.warn('Missing coordinates for load:', load?.id)
     return
   }
 
@@ -292,24 +347,76 @@ const formatDate = (dateString: string) => {
   return date.toLocaleString()
 }
 
-// Polling for real-time updates
-const pollInterval = ref<NodeJS.Timeout | null>(null)
+// WebSocket real-time updates
+const handleLocationUpdate = (data: any) => {
+  console.log('Location update received:', data)
+
+  // Update the current journey's location
+  if (selectedJourney.value && data.journeyId === selectedJourney.value.id) {
+    selectedJourney.value.currentLatitude = data.latitude
+    selectedJourney.value.currentLongitude = data.longitude
+
+    // Update map marker
+    if (map) {
+      // Remove old current location marker and add new one
+      initializeMap()
+    }
+  }
+
+  // Update in the journeys list
+  const journeyIndex = activeJourneys.value.findIndex(j => j.id === data.journeyId)
+  if (journeyIndex !== -1) {
+    activeJourneys.value[journeyIndex].currentLatitude = data.latitude
+    activeJourneys.value[journeyIndex].currentLongitude = data.longitude
+  }
+}
+
+const handleJourneyStatus = (data: any) => {
+  console.log('Journey status update:', data)
+
+  // If journey completed or stopped, refresh the list
+  if (data.status === 'COMPLETED') {
+    fetchActiveJourneys()
+  }
+}
 
 onMounted(() => {
+  // Initial fetch
   fetchActiveJourneys()
 
-  // Poll every 10 seconds for updates
-  pollInterval.value = setInterval(() => {
-    fetchActiveJourneys()
-  }, 10000)
-})
+  // Connect WebSocket
+  ws.connect()
 
-onUnmounted(() => {
-  if (pollInterval.value) {
-    clearInterval(pollInterval.value)
-  }
-  if (map) {
-    map.remove()
-  }
+  // Set up WebSocket listeners
+  ws.onLocationUpdate(handleLocationUpdate)
+  ws.onJourneyStatus(handleJourneyStatus)
+
+  // Fallback polling every 30 seconds (in case WebSocket fails)
+  const pollInterval = setInterval(() => {
+    if (!ws.connected.value) {
+      console.log('WebSocket not connected, using polling fallback')
+      fetchActiveJourneys()
+    }
+  }, 30000)
+
+  // Cleanup
+  onUnmounted(() => {
+    clearInterval(pollInterval)
+
+    // Leave current journey room
+    if (selectedJourney.value && ws.connected.value) {
+      ws.leaveJourney(selectedJourney.value.id)
+    }
+
+    // Remove WebSocket listeners
+    ws.offLocationUpdate(handleLocationUpdate)
+    ws.offJourneyStatus(handleJourneyStatus)
+    ws.disconnect()
+
+    // Remove map
+    if (map) {
+      map.remove()
+    }
+  })
 })
 </script>

@@ -32,10 +32,11 @@ export const useLoadsStore = defineStore('loads', {
     filteredLoads: (state) => {
       let filtered = [...state.loads]
 
-      // Search query filter (searches across multiple fields)
+      // Search query filter (searches across multiple fields including load ID)
       if (state.filters.searchQuery) {
         const query = state.filters.searchQuery.toLowerCase()
         filtered = filtered.filter((load: any) =>
+          load.displayId?.toLowerCase().includes(query) ||
           load.originCity?.toLowerCase().includes(query) ||
           load.destinationCity?.toLowerCase().includes(query) ||
           load.originCountry?.toLowerCase().includes(query) ||
