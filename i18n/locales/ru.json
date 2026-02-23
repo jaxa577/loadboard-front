@@ -1,6 +1,7 @@
 {
   "common": {
     "loading": "Загрузка...",
+    "loadingMore": "Загружаем ещё...",
     "save": "Сохранить",
     "cancel": "Отмена",
     "delete": "Удалить",
@@ -59,6 +60,8 @@
     "archiveLoad": "Архивировать груз",
     "title": "Груз",
     "loads": "Грузы",
+    "totalLoads": "Всего грузов",
+    "allLoadsLoaded": "Все грузы загружены",
     "createLoad": "Создать груз",
     "editLoad": "Редактировать груз",
     "route": "Маршрут",

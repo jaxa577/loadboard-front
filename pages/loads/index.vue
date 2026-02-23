@@ -2,7 +2,12 @@
   <NuxtLayout name="app">
     <div class="px-4 sm:px-6 lg:px-0">
       <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 sm:mb-8">
-        <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">{{ $t('load.loads') }}</h1>
+        <div>
+          <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">{{ $t('load.loads') }}</h1>
+          <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
+            {{ $t('load.totalLoads') }}: {{ loadsStore.totalLoads }}
+          </p>
+        </div>
         <NuxtLink
           v-if="authStore.isShipper || authStore.isBroker"
           to="/create-load"
@@ -48,7 +53,7 @@
         </div>
       </div>
 
-      <div v-if="loading" class="text-center py-12">
+      <div v-if="loadsStore.loading" class="text-center py-12">
         <div class="text-gray-500 dark:text-gray-400">{{ $t('common.loading') }}</div>
       </div>
 
@@ -56,13 +61,32 @@
         <div class="text-gray-500 dark:text-gray-400">{{ $t('load.noLoads') }}</div>
       </div>
 
-      <div v-else :class="viewMode === 'grid' ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6' : 'space-y-4'">
-        <LoadCard
-          v-for="load in loadsStore.filteredLoads"
-          :key="load.id"
-          :load="load"
-          :view-mode="viewMode"
-        />
+      <div v-else>
+        <div :class="viewMode === 'grid' ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6' : 'space-y-4'">
+          <LoadCard
+            v-for="load in loadsStore.filteredLoads"
+            :key="load.id"
+            :load="load"
+            :view-mode="viewMode"
+          />
+        </div>
+
+        <!-- Infinite Scroll Trigger -->
+        <div
+          ref="loadMoreTrigger"
+          class="py-8 flex justify-center"
+        >
+          <div v-if="loadsStore.loadingMore" class="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+            <svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            <span>{{ $t('common.loadingMore') }}</span>
+          </div>
+          <div v-else-if="!loadsStore.hasMorePages && loadsStore.filteredLoads.length > 0" class="text-gray-400 dark:text-gray-500 text-sm">
+            {{ $t('load.allLoadsLoaded') }}
+          </div>
+        </div>
       </div>
     </div>
   </NuxtLayout>
@@ -72,7 +96,7 @@
 const authStore = useAuthStore()
 const loadsStore = useLoadsStore()
 
-const loading = ref(true)
+const loadMoreTrigger = ref<HTMLElement | null>(null)
 
 // Load view mode from localStorage or default to 'grid'
 const getInitialViewMode = (): 'grid' | 'list' => {
@@ -92,13 +116,53 @@ watch(viewMode, (newMode) => {
   }
 })
 
+// Intersection Observer for infinite scroll
+let observer: IntersectionObserver | null = null
+
+const setupIntersectionObserver = () => {
+  if (!process.client) return
+
+  observer = new IntersectionObserver(
+    (entries) => {
+      const entry = entries[0]
+      if (entry.isIntersecting && loadsStore.hasMorePages && !loadsStore.loadingMore) {
+        loadsStore.loadMoreLoads()
+      }
+    },
+    {
+      rootMargin: '100px',
+      threshold: 0.1,
+    }
+  )
+
+  if (loadMoreTrigger.value) {
+    observer.observe(loadMoreTrigger.value)
+  }
+}
+
 onMounted(async () => {
   try {
-    await loadsStore.fetchLoads()
+    await loadsStore.fetchLoads(1, 20, true)
   } catch (error) {
     console.error('Error fetching loads:', error)
-  } finally {
-    loading.value = false
+  }
+
+  // Setup intersection observer after initial load
+  nextTick(() => {
+    setupIntersectionObserver()
+  })
+})
+
+onUnmounted(() => {
+  if (observer) {
+    observer.disconnect()
+  }
+})
+
+// Re-observe when the trigger element changes
+watch(loadMoreTrigger, (newEl) => {
+  if (observer && newEl) {
+    observer.observe(newEl)
   }
 })
 
@@ -106,4 +170,3 @@ useHead({
   title: 'Лента грузов - SNG LoadBoard',
 })
 </script>
-

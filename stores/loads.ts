@@ -6,9 +6,11 @@ export const useLoadsStore = defineStore('loads', {
     loads: [] as Load[],
     currentLoad: null as Load | null,
     applications: [] as LoadApplication[],
+    loading: false,
+    loadingMore: false,
     pagination: {
       page: 1,
-      limit: 10,
+      limit: 20,
       total: 0,
       pages: 0,
     },
@@ -90,11 +92,25 @@ export const useLoadsStore = defineStore('loads', {
 
       return filtered
     },
+
+    hasMorePages: (state) => {
+      return state.pagination.page < state.pagination.pages
+    },
+
+    totalLoads: (state) => {
+      return state.pagination.total
+    },
   },
 
   actions: {
-    async fetchLoads(page = 1, limit = 10) {
+    async fetchLoads(page = 1, limit = 20, reset = true) {
       try {
+        if (reset) {
+          this.loading = true
+        } else {
+          this.loadingMore = true
+        }
+
         const config = useRuntimeConfig()
         const apiBase = config.public.apiBase || 'https://api.loadboard.asia/api/v1'
         const authStore = useAuthStore()
@@ -110,7 +126,17 @@ export const useLoadsStore = defineStore('loads', {
           },
         })
 
-        this.loads = response.loads || response
+        const newLoads = response.loads || response
+
+        if (reset) {
+          this.loads = newLoads
+        } else {
+          // Append new loads, avoiding duplicates
+          const existingIds = new Set(this.loads.map((l: any) => l.id))
+          const uniqueNewLoads = newLoads.filter((l: any) => !existingIds.has(l.id))
+          this.loads = [...this.loads, ...uniqueNewLoads]
+        }
+
         this.pagination = response.pagination || {
           page,
           limit,
@@ -122,7 +148,17 @@ export const useLoadsStore = defineStore('loads', {
       } catch (error: any) {
         console.error('Error fetching loads:', error)
         throw error
+      } finally {
+        this.loading = false
+        this.loadingMore = false
       }
+    },
+
+    async loadMoreLoads() {
+      if (this.loadingMore || !this.hasMorePages) return
+
+      const nextPage = this.pagination.page + 1
+      await this.fetchLoads(nextPage, this.pagination.limit, false)
     },
 
     async fetchLoad(id: string) {
@@ -170,6 +206,7 @@ export const useLoadsStore = defineStore('loads', {
         })
 
         this.loads.unshift(load)
+        this.pagination.total += 1
         return load
       } catch (error: any) {
         console.error('Error creating load:', error)
@@ -230,6 +267,7 @@ export const useLoadsStore = defineStore('loads', {
         })
 
         this.loads = this.loads.filter((l: any) => l.id !== id)
+        this.pagination.total -= 1
         if (this.currentLoad?.id === id) {
           this.currentLoad = null
         }
@@ -349,6 +387,16 @@ export const useLoadsStore = defineStore('loads', {
         status: '',
         urgent: null,
         maxDistance: null,
+      }
+    },
+
+    resetLoads() {
+      this.loads = []
+      this.pagination = {
+        page: 1,
+        limit: 20,
+        total: 0,
+        pages: 0,
       }
     },
   },
