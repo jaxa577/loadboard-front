@@ -5,13 +5,24 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch, onUnmounted } from 'vue';
-import mapboxgl from 'mapbox-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
+import { ref, onMounted, watch, onUnmounted } from "vue";
+import mapboxgl from "mapbox-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
+const config = useRuntimeConfig();
 
 interface Props {
-  origin: { city: string; region?: string; latitude?: number; longitude?: number } | null;
-  destination: { city: string; region?: string; latitude?: number; longitude?: number } | null;
+  origin: {
+    city: string;
+    region?: string;
+    latitude?: number;
+    longitude?: number;
+  } | null;
+  destination: {
+    city: string;
+    region?: string;
+    latitude?: number;
+    longitude?: number;
+  } | null;
   currentLocation: { latitude: number; longitude: number } | null;
   routePoints: Array<{ latitude: number; longitude: number }>;
 }
@@ -27,50 +38,49 @@ let routeLine: mapboxgl.GeoJSONSource | null = null;
 
 // Mapbox access token - You'll need to add this to your .env file
 // For now using a placeholder - get your free token from https://account.mapbox.com
-const MAPBOX_TOKEN = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'; // Demo token
 
 onMounted(() => {
   if (!mapContainer.value) return;
 
-  mapboxgl.accessToken = MAPBOX_TOKEN;
+  mapboxgl.accessToken = config.public.mapboxToken;
 
   // Initialize map
   map = new mapboxgl.Map({
     container: mapContainer.value,
-    style: 'mapbox://styles/mapbox/streets-v12',
+    style: "mapbox://styles/mapbox/streets-v12",
     center: props.currentLocation
       ? [props.currentLocation.longitude, props.currentLocation.latitude]
       : [0, 0],
     zoom: 10,
   });
 
-  map.addControl(new mapboxgl.NavigationControl(), 'top-right');
+  map.addControl(new mapboxgl.NavigationControl(), "top-right");
 
-  map.on('load', () => {
+  map.on("load", () => {
     // Add route line layer
-    map!.addSource('route', {
-      type: 'geojson',
+    map!.addSource("route", {
+      type: "geojson",
       data: {
-        type: 'Feature',
+        type: "Feature",
         properties: {},
         geometry: {
-          type: 'LineString',
+          type: "LineString",
           coordinates: [],
         },
       },
     });
 
     map!.addLayer({
-      id: 'route',
-      type: 'line',
-      source: 'route',
+      id: "route",
+      type: "line",
+      source: "route",
       layout: {
-        'line-join': 'round',
-        'line-cap': 'round',
+        "line-join": "round",
+        "line-cap": "round",
       },
       paint: {
-        'line-color': '#2563eb',
-        'line-width': 4,
+        "line-color": "#2563eb",
+        "line-width": 4,
       },
     });
 
@@ -93,7 +103,7 @@ watch(
       updateRoute();
     }
   },
-  { deep: true }
+  { deep: true },
 );
 
 watch(
@@ -101,7 +111,7 @@ watch(
   () => {
     updateRoute();
   },
-  { deep: true }
+  { deep: true },
 );
 
 const updateMap = () => {
@@ -111,7 +121,11 @@ const updateMap = () => {
     updateOriginMarker(props.origin);
   }
 
-  if (props.destination && props.destination.latitude && props.destination.longitude) {
+  if (
+    props.destination &&
+    props.destination.latitude &&
+    props.destination.longitude
+  ) {
     updateDestinationMarker(props.destination);
   }
 
@@ -123,7 +137,10 @@ const updateMap = () => {
   fitMapToBounds();
 };
 
-const updateDriverMarker = (location: { latitude: number; longitude: number }) => {
+const updateDriverMarker = (location: {
+  latitude: number;
+  longitude: number;
+}) => {
   if (!map) return;
 
   const lngLat: [number, number] = [location.longitude, location.latitude];
@@ -132,8 +149,8 @@ const updateDriverMarker = (location: { latitude: number; longitude: number }) =
     driverMarker.setLngLat(lngLat);
   } else {
     // Create custom truck marker
-    const el = document.createElement('div');
-    el.className = 'driver-marker';
+    const el = document.createElement("div");
+    el.className = "driver-marker";
     el.innerHTML = `
       <div style="
         background: #2563eb;
@@ -157,10 +174,13 @@ const updateDriverMarker = (location: { latitude: number; longitude: number }) =
       .setLngLat(lngLat)
       .addTo(map);
   }
-
 };
 
-const updateOriginMarker = (origin: { latitude: number; longitude: number; city: string }) => {
+const updateOriginMarker = (origin: {
+  latitude: number;
+  longitude: number;
+  city: string;
+}) => {
   if (!map) return;
 
   const lngLat: [number, number] = [origin.longitude, origin.latitude];
@@ -168,7 +188,7 @@ const updateOriginMarker = (origin: { latitude: number; longitude: number; city:
   if (originMarker) {
     originMarker.setLngLat(lngLat);
   } else {
-    const el = document.createElement('div');
+    const el = document.createElement("div");
     el.innerHTML = `
       <div style="
         background: #10b981;
@@ -196,15 +216,22 @@ const updateOriginMarker = (origin: { latitude: number; longitude: number; city:
   }
 };
 
-const updateDestinationMarker = (destination: { latitude: number; longitude: number; city: string }) => {
+const updateDestinationMarker = (destination: {
+  latitude: number;
+  longitude: number;
+  city: string;
+}) => {
   if (!map) return;
 
-  const lngLat: [number, number] = [destination.longitude, destination.latitude];
+  const lngLat: [number, number] = [
+    destination.longitude,
+    destination.latitude,
+  ];
 
   if (destinationMarker) {
     destinationMarker.setLngLat(lngLat);
   } else {
-    const el = document.createElement('div');
+    const el = document.createElement("div");
     el.innerHTML = `
       <div style="
         background: #ef4444;
@@ -233,18 +260,18 @@ const updateDestinationMarker = (destination: { latitude: number; longitude: num
 };
 
 const updateRoute = () => {
-  if (!map || !map.getSource('route')) return;
+  if (!map || !map.getSource("route")) return;
 
   const coordinates = props.routePoints.map((point) => [
     point.longitude,
     point.latitude,
   ]);
 
-  (map.getSource('route') as mapboxgl.GeoJSONSource).setData({
-    type: 'Feature',
+  (map.getSource("route") as mapboxgl.GeoJSONSource).setData({
+    type: "Feature",
     properties: {},
     geometry: {
-      type: 'LineString',
+      type: "LineString",
       coordinates,
     },
   });
@@ -263,14 +290,21 @@ const fitMapToBounds = () => {
   }
 
   // Add destination
-  if (props.destination && props.destination.latitude && props.destination.longitude) {
+  if (
+    props.destination &&
+    props.destination.latitude &&
+    props.destination.longitude
+  ) {
     bounds.extend([props.destination.longitude, props.destination.latitude]);
     hasPoints = true;
   }
 
   // Add current location
   if (props.currentLocation) {
-    bounds.extend([props.currentLocation.longitude, props.currentLocation.latitude]);
+    bounds.extend([
+      props.currentLocation.longitude,
+      props.currentLocation.latitude,
+    ]);
     hasPoints = true;
   }
 

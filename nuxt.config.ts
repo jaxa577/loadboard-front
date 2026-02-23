@@ -49,6 +49,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       apiBase: "https://api.loadboard.asia/api/v1",
+      mapboxToken: process.env.NUXT_PUBLIC_MAPBOX_TOKEN,
     },
   },
 
