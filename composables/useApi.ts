@@ -1,6 +1,6 @@
 export const useApi = () => {
   const config = useRuntimeConfig();
-  const apiBase = config.public.apiBase || "https://clb-back-production.up.railway.app/api/v1";
+  const apiBase = config.public.apiBase || "https://api.loadboard.asia/api/v1";
 
   const getAuthHeaders = () => {
     const token = localStorage.getItem("token");
@@ -52,7 +52,7 @@ export const useApi = () => {
           `${apiBase}/loads${query ? `?${query}` : ""}`,
           {
             headers: getAuthHeaders(),
-          }
+          },
         );
         return handleResponse(response);
       },
@@ -146,7 +146,7 @@ export const useApi = () => {
           `${apiBase}/messages/conversation/${userId}`,
           {
             headers: getAuthHeaders(),
-          }
+          },
         );
         return handleResponse(response);
       },
@@ -205,9 +205,12 @@ export const useApi = () => {
         return handleResponse(response);
       },
       getLocations: async (journeyId: string) => {
-        const response = await fetch(`${apiBase}/journeys/${journeyId}/locations`, {
-          headers: getAuthHeaders(),
-        });
+        const response = await fetch(
+          `${apiBase}/journeys/${journeyId}/locations`,
+          {
+            headers: getAuthHeaders(),
+          },
+        );
         return handleResponse(response);
       },
     },

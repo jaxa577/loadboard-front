@@ -13,7 +13,7 @@ export const useProfileStore = defineStore('profile', {
     async fetchProfile(userId?: string) {
       try {
         const config = useRuntimeConfig()
-        const apiBase = config.public.apiBase || 'https://clb-back-production.up.railway.app/api/v1'
+        const apiBase = config.public.apiBase || 'https://api.loadboard.asia/api/v1'
         const authStore = useAuthStore()
         const token = authStore.token || (process.client ? localStorage.getItem('token') : null)
 
@@ -44,7 +44,7 @@ export const useProfileStore = defineStore('profile', {
     async updateProfile(data: Partial<User>) {
       try {
         const config = useRuntimeConfig()
-        const apiBase = config.public.apiBase || 'https://clb-back-production.up.railway.app/api/v1'
+        const apiBase = config.public.apiBase || 'https://api.loadboard.asia/api/v1'
         const authStore = useAuthStore()
         const token = authStore.token || (process.client ? localStorage.getItem('token') : null)
 
@@ -75,7 +75,7 @@ export const useProfileStore = defineStore('profile', {
     async fetchUserLoads(userId?: string) {
       try {
         const config = useRuntimeConfig()
-        const apiBase = config.public.apiBase || 'https://clb-back-production.up.railway.app/api/v1'
+        const apiBase = config.public.apiBase || 'https://api.loadboard.asia/api/v1'
         const authStore = useAuthStore()
         const token = authStore.token || (process.client ? localStorage.getItem('token') : null)
 
@@ -101,7 +101,7 @@ export const useProfileStore = defineStore('profile', {
     async fetchApplications() {
       try {
         const config = useRuntimeConfig()
-        const apiBase = config.public.apiBase || 'https://clb-back-production.up.railway.app/api/v1'
+        const apiBase = config.public.apiBase || 'https://api.loadboard.asia/api/v1'
         const authStore = useAuthStore()
         const token = authStore.token || (process.client ? localStorage.getItem('token') : null)
 
@@ -126,7 +126,7 @@ export const useProfileStore = defineStore('profile', {
     async fetchHistory() {
       try {
         const config = useRuntimeConfig()
-        const apiBase = config.public.apiBase || 'https://clb-back-production.up.railway.app/api/v1'
+        const apiBase = config.public.apiBase || 'https://api.loadboard.asia/api/v1'
         const authStore = useAuthStore()
         const token = authStore.token || (process.client ? localStorage.getItem('token') : null)
 

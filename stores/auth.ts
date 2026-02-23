@@ -22,7 +22,7 @@ export const useAuthStore = defineStore('auth', {
     async loginWithEmail(email: string, password: string, role?: UserRole) {
       try {
         const config = useRuntimeConfig()
-        const apiBase = config.public.apiBase || 'https://clb-back-production.up.railway.app/api/v1'
+        const apiBase = config.public.apiBase || 'https://api.loadboard.asia/api/v1'
 
         const response = await $fetch<{ accessToken: string; user: any }>(`${apiBase}/auth/login/`, {
           method: 'POST',
@@ -48,7 +48,7 @@ export const useAuthStore = defineStore('auth', {
     async register(data: Record<string, any>) {
       try {
         const config = useRuntimeConfig()
-        const apiBase = config.public.apiBase || 'https://clb-back-production.up.railway.app/api/v1'
+        const apiBase = config.public.apiBase || 'https://api.loadboard.asia/api/v1'
 
         // Map frontend role to backend role (uppercase)
         const roleMap: Record<string, string> = {
@@ -105,7 +105,7 @@ export const useAuthStore = defineStore('auth', {
     async fetchCurrentUser() {
       try {
         const config = useRuntimeConfig()
-        const apiBase = config.public.apiBase || 'https://clb-back-production.up.railway.app/api/v1'
+        const apiBase = config.public.apiBase || 'https://api.loadboard.asia/api/v1'
 
         const token = this.token || (process.client ? localStorage.getItem('token') : null)
         if (!token) {

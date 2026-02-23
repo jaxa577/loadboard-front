@@ -96,7 +96,7 @@ export const useLoadsStore = defineStore('loads', {
     async fetchLoads(page = 1, limit = 10) {
       try {
         const config = useRuntimeConfig()
-        const apiBase = config.public.apiBase || 'https://clb-back-production.up.railway.app/api/v1'
+        const apiBase = config.public.apiBase || 'https://api.loadboard.asia/api/v1'
         const authStore = useAuthStore()
         const token = authStore.token || (process.client ? localStorage.getItem('token') : null)
 
@@ -128,7 +128,7 @@ export const useLoadsStore = defineStore('loads', {
     async fetchLoad(id: string) {
       try {
         const config = useRuntimeConfig()
-        const apiBase = config.public.apiBase || 'https://clb-back-production.up.railway.app/api/v1'
+        const apiBase = config.public.apiBase || 'https://api.loadboard.asia/api/v1'
         const authStore = useAuthStore()
         const token = authStore.token || (process.client ? localStorage.getItem('token') : null)
 
@@ -153,7 +153,7 @@ export const useLoadsStore = defineStore('loads', {
     async createLoad(loadData: any) {
       try {
         const config = useRuntimeConfig()
-        const apiBase = config.public.apiBase || 'https://clb-back-production.up.railway.app/api/v1'
+        const apiBase = config.public.apiBase || 'https://api.loadboard.asia/api/v1'
         const authStore = useAuthStore()
         const token = authStore.token || (process.client ? localStorage.getItem('token') : null)
 
@@ -180,7 +180,7 @@ export const useLoadsStore = defineStore('loads', {
     async updateLoad(id: string, loadData: any) {
       try {
         const config = useRuntimeConfig()
-        const apiBase = config.public.apiBase || 'https://clb-back-production.up.railway.app/api/v1'
+        const apiBase = config.public.apiBase || 'https://api.loadboard.asia/api/v1'
         const authStore = useAuthStore()
         const token = authStore.token || (process.client ? localStorage.getItem('token') : null)
 
@@ -214,7 +214,7 @@ export const useLoadsStore = defineStore('loads', {
     async deleteLoad(id: string) {
       try {
         const config = useRuntimeConfig()
-        const apiBase = config.public.apiBase || 'https://clb-back-production.up.railway.app/api/v1'
+        const apiBase = config.public.apiBase || 'https://api.loadboard.asia/api/v1'
         const authStore = useAuthStore()
         const token = authStore.token || (process.client ? localStorage.getItem('token') : null)
 
@@ -242,7 +242,7 @@ export const useLoadsStore = defineStore('loads', {
     async archiveLoad(id: string) {
       try {
         const config = useRuntimeConfig()
-        const apiBase = config.public.apiBase || 'https://clb-back-production.up.railway.app/api/v1'
+        const apiBase = config.public.apiBase || 'https://api.loadboard.asia/api/v1'
         const authStore = useAuthStore()
         const token = authStore.token || (process.client ? localStorage.getItem('token') : null)
 
@@ -275,7 +275,7 @@ export const useLoadsStore = defineStore('loads', {
     async applyToLoad(loadId: string, role?: string) {
       try {
         const config = useRuntimeConfig()
-        const apiBase = config.public.apiBase || 'https://clb-back-production.up.railway.app/api/v1'
+        const apiBase = config.public.apiBase || 'https://api.loadboard.asia/api/v1'
         const authStore = useAuthStore()
         const token = authStore.token || (process.client ? localStorage.getItem('token') : null)
 
@@ -305,7 +305,7 @@ export const useLoadsStore = defineStore('loads', {
     async fetchApplications(loadId?: string) {
       try {
         const config = useRuntimeConfig()
-        const apiBase = config.public.apiBase || 'https://clb-back-production.up.railway.app/api/v1'
+        const apiBase = config.public.apiBase || 'https://api.loadboard.asia/api/v1'
         const authStore = useAuthStore()
         const token = authStore.token || (process.client ? localStorage.getItem('token') : null)
 

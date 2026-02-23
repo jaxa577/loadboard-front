@@ -10,8 +10,8 @@ import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 interface Props {
-  origin: { city: string; region?: string } | null;
-  destination: { city: string; region?: string } | null;
+  origin: { city: string; region?: string; latitude?: number; longitude?: number } | null;
+  destination: { city: string; region?: string; latitude?: number; longitude?: number } | null;
   currentLocation: { latitude: number; longitude: number } | null;
   routePoints: Array<{ latitude: number; longitude: number }>;
 }
@@ -21,6 +21,8 @@ const props = defineProps<Props>();
 const mapContainer = ref<HTMLElement | null>(null);
 let map: mapboxgl.Map | null = null;
 let driverMarker: mapboxgl.Marker | null = null;
+let originMarker: mapboxgl.Marker | null = null;
+let destinationMarker: mapboxgl.Marker | null = null;
 let routeLine: mapboxgl.GeoJSONSource | null = null;
 
 // Mapbox access token - You'll need to add this to your .env file
@@ -103,10 +105,22 @@ watch(
 );
 
 const updateMap = () => {
-  if (!map || !props.currentLocation) return;
+  if (!map) return;
 
-  updateDriverMarker(props.currentLocation);
+  if (props.origin && props.origin.latitude && props.origin.longitude) {
+    updateOriginMarker(props.origin);
+  }
+
+  if (props.destination && props.destination.latitude && props.destination.longitude) {
+    updateDestinationMarker(props.destination);
+  }
+
+  if (props.currentLocation) {
+    updateDriverMarker(props.currentLocation);
+  }
+
   updateRoute();
+  fitMapToBounds();
 };
 
 const updateDriverMarker = (location: { latitude: number; longitude: number }) => {
@@ -144,12 +158,78 @@ const updateDriverMarker = (location: { latitude: number; longitude: number }) =
       .addTo(map);
   }
 
-  // Center map on driver with smooth animation
-  map.flyTo({
-    center: lngLat,
-    zoom: 12,
-    duration: 1000,
-  });
+};
+
+const updateOriginMarker = (origin: { latitude: number; longitude: number; city: string }) => {
+  if (!map) return;
+
+  const lngLat: [number, number] = [origin.longitude, origin.latitude];
+
+  if (originMarker) {
+    originMarker.setLngLat(lngLat);
+  } else {
+    const el = document.createElement('div');
+    el.innerHTML = `
+      <div style="
+        background: #10b981;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 20px;
+        font-weight: 600;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 14px;
+      ">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 18px; height: 18px;">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+        </svg>
+        Origin
+      </div>
+    `;
+
+    originMarker = new mapboxgl.Marker({ element: el })
+      .setLngLat(lngLat)
+      .addTo(map);
+  }
+};
+
+const updateDestinationMarker = (destination: { latitude: number; longitude: number; city: string }) => {
+  if (!map) return;
+
+  const lngLat: [number, number] = [destination.longitude, destination.latitude];
+
+  if (destinationMarker) {
+    destinationMarker.setLngLat(lngLat);
+  } else {
+    const el = document.createElement('div');
+    el.innerHTML = `
+      <div style="
+        background: #ef4444;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 20px;
+        font-weight: 600;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 14px;
+      ">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 18px; height: 18px;">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+        </svg>
+        Destination
+      </div>
+    `;
+
+    destinationMarker = new mapboxgl.Marker({ element: el })
+      .setLngLat(lngLat)
+      .addTo(map);
+  }
 };
 
 const updateRoute = () => {
@@ -168,17 +248,43 @@ const updateRoute = () => {
       coordinates,
     },
   });
+};
 
-  // Fit map to show entire route
-  if (coordinates.length > 1) {
-    const bounds = coordinates.reduce(
-      (bounds, coord) => bounds.extend(coord as [number, number]),
-      new mapboxgl.LngLatBounds(coordinates[0] as [number, number], coordinates[0] as [number, number])
-    );
+const fitMapToBounds = () => {
+  if (!map) return;
 
+  const bounds = new mapboxgl.LngLatBounds();
+  let hasPoints = false;
+
+  // Add origin
+  if (props.origin && props.origin.latitude && props.origin.longitude) {
+    bounds.extend([props.origin.longitude, props.origin.latitude]);
+    hasPoints = true;
+  }
+
+  // Add destination
+  if (props.destination && props.destination.latitude && props.destination.longitude) {
+    bounds.extend([props.destination.longitude, props.destination.latitude]);
+    hasPoints = true;
+  }
+
+  // Add current location
+  if (props.currentLocation) {
+    bounds.extend([props.currentLocation.longitude, props.currentLocation.latitude]);
+    hasPoints = true;
+  }
+
+  // Add route points
+  props.routePoints.forEach((point) => {
+    bounds.extend([point.longitude, point.latitude]);
+    hasPoints = true;
+  });
+
+  if (hasPoints) {
     map.fitBounds(bounds, {
-      padding: 50,
+      padding: 80,
       duration: 1000,
+      maxZoom: 12,
     });
   }
 };

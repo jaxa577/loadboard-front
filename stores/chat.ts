@@ -23,7 +23,7 @@ export const useChatStore = defineStore('chat', {
     async fetchChats() {
       try {
         const config = useRuntimeConfig()
-        const apiBase = config.public.apiBase || 'https://clb-back-production.up.railway.app/api/v1'
+        const apiBase = config.public.apiBase || 'https://api.loadboard.asia/api/v1'
         const token = localStorage.getItem('token')
         if (!token) throw new Error('Not authenticated')
 
@@ -44,7 +44,7 @@ export const useChatStore = defineStore('chat', {
     async fetchMessages(userId: string) {
       try {
         const config = useRuntimeConfig()
-        const apiBase = config.public.apiBase || 'https://clb-back-production.up.railway.app/api/v1'
+        const apiBase = config.public.apiBase || 'https://api.loadboard.asia/api/v1'
         const token = localStorage.getItem('token')
         if (!token) throw new Error('Not authenticated')
 
@@ -64,7 +64,7 @@ export const useChatStore = defineStore('chat', {
     async sendMessage(receiverId: string, content: string) {
       try {
         const config = useRuntimeConfig()
-        const apiBase = config.public.apiBase || 'https://clb-back-production.up.railway.app/api/v1'
+        const apiBase = config.public.apiBase || 'https://api.loadboard.asia/api/v1'
         const token = localStorage.getItem('token')
         if (!token) throw new Error('Not authenticated')
 

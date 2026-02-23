@@ -34,14 +34,17 @@
             </div>
             <div class="relative" style="height: 600px;">
               <LiveTrackingMap
-                v-if="journey && currentLocation"
+                v-if="journey && (currentLocation || (mapOrigin && mapDestination))"
                 :origin="mapOrigin"
                 :destination="mapDestination"
                 :current-location="currentLocation"
                 :route-points="routePoints"
               />
               <div v-else class="flex items-center justify-center h-full bg-gray-100">
-                <p class="text-gray-500">No active journey found</p>
+                <div class="text-center">
+                  <p class="text-gray-500">No active journey found</p>
+                  <p class="text-sm text-gray-400 mt-2">The map will appear when a driver starts the journey</p>
+                </div>
               </div>
             </div>
           </div>
@@ -216,6 +219,8 @@ const mapOrigin = computed(() => {
   return {
     city: load.value.originCity,
     region: load.value.originRegion,
+    latitude: load.value.originLatitude,
+    longitude: load.value.originLongitude,
   };
 });
 
@@ -224,6 +229,8 @@ const mapDestination = computed(() => {
   return {
     city: load.value.destinationCity,
     region: load.value.destinationRegion,
+    latitude: load.value.destinationLatitude,
+    longitude: load.value.destinationLongitude,
   };
 });
 
