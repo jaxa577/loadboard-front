@@ -2,8 +2,9 @@
   <header class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
     <div class="container mx-auto px-4">
       <div class="flex items-center justify-between h-16">
-        <NuxtLink to="/" class="text-2xl font-bold text-primary-600 dark:text-primary-400">
-          SNG LoadBoard
+        <NuxtLink to="/" class="flex items-center gap-2 text-2xl font-bold text-primary-600 dark:text-primary-400">
+          <img src="/LB.svg" alt="LoadBord Logo" class="h-8 w-8" />
+          LoadBord
         </NuxtLink>
 
         <nav class="hidden md:flex items-center space-x-6">

@@ -36,13 +36,13 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: "SNG LoadBoard - Платформа для грузоперевозок",
+      title: "LoadBord",
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         { name: "description", content: "Платформа для грузоперевозок в СНГ" },
       ],
-      link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+      link: [{ rel: "icon", type: "image/svg+xml", href: "/LB.svg" }],
     },
   },
 
