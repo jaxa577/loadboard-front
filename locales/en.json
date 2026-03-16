@@ -175,7 +175,8 @@
     "passwordMinLength": "Password must be at least 6 characters",
     "fillRouteFields": "Please fill all required route fields",
     "fillCargoFields": "Please fill all required cargo fields",
-    "selectLoadingDate": "Please select loading date"
+    "selectLoadingDate": "Please select loading date",
+    "fillPrice": "Please specify price or mark it as negotiable"
   },
   "errors": {
     "general": "An error occurred",
@@ -193,7 +194,21 @@
     "users": "Users",
     "loads": "Loads",
     "stats": "Statistics",
-    "confirmDelete": "Are you sure you want to delete?"
+    "confirmDelete": "Are you sure you want to delete?",
+    "totalUsers": "Total Users",
+    "totalLoads": "Total Loads",
+    "activeLoads": "Active Loads",
+    "revenue": "Revenue",
+    "name": "Name",
+    "phone": "Phone",
+    "role": "Role",
+    "status": "Status",
+    "actions": "Actions",
+    "verified": "Verified",
+    "notVerified": "Not Verified",
+    "block": "Block",
+    "unblock": "Unblock",
+    "delete": "Delete"
   },
   "filter": {
     "searchPlaceholder": "Search loads by city, cargo type, or keywords...",
@@ -207,7 +222,7 @@
   },
   "landing": {
     "hero": {
-      "title": "SNG LoadBoard",
+      "title": "LoadBoard",
       "subtitle": "Cargo transportation platform in CIS",
       "description": "Delivery, brokering, secure transactions",
       "createAccount": "Create Account",
@@ -287,7 +302,7 @@
       "platform": "Platform",
       "about": "About Us",
       "legal": "Legal Information",
-      "copyright": "© 2024 SNG LoadBoard. All rights reserved.",
+      "copyright": "© 2024 LoadBoard. All rights reserved.",
       "testAccounts": "Test accounts"
     }
   }

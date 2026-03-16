@@ -247,7 +247,7 @@
   },
   "landing": {
     "hero": {
-      "title": "SNG LoadBoard",
+      "title": "LoadBoard",
       "subtitle": "Платформаи ҳамли бор дар ИДМ",
       "description": "Расонидан, брокерӣ, шартномаҳои бехатар",
       "createAccount": "Ҳисоб эҷод кунед",
@@ -327,7 +327,7 @@
       "platform": "Платформа",
       "about": "Дар бораи мо",
       "legal": "Маълумоти ҳуқуқӣ",
-      "copyright": "© 2024 SNG LoadBoard. Ҳамаи ҳуқуқҳо маҳфуз аст.",
+      "copyright": "© 2024 LoadBoard. Ҳамаи ҳуқуқҳо маҳфуз аст.",
       "testAccounts": "Ҳисобҳои санҷишӣ"
     }
   }

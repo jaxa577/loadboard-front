@@ -78,6 +78,6 @@ const onSubmit = async () => {
 
 const formatDate = (date: string) => new Date(date).toLocaleString('ru-RU')
 
-useHead({ title: 'Оценки - SNG LoadBoard' })
+useHead({ title: 'Оценки - LoadBoard' })
 </script>
 

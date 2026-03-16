@@ -1,7 +1,7 @@
 <template>
   <div>
     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-      Ваша роль
+      {{ $t('auth.yourRole') }}
     </label>
     <div class="grid grid-cols-3 gap-3">
       <button
@@ -17,7 +17,7 @@
       >
         <Icon :name="roleOption.icon" class="w-6 h-6 mx-auto mb-2 text-primary-600 dark:text-primary-400" />
         <div class="text-sm font-medium text-gray-900 dark:text-white">
-          {{ roleOption.label }}
+          {{ $t(roleOption.label) }}
         </div>
       </button>
     </div>
@@ -41,9 +41,9 @@ const roleValue = computed({
 })
 
 const roles = [
-  { value: 'driver' as UserRole, label: 'Водитель', icon: 'heroicons:truck' },
-  { value: 'shipper' as UserRole, label: 'Отправитель', icon: 'heroicons:cube' },
-  { value: 'broker' as UserRole, label: 'Брокер', icon: 'heroicons:briefcase' },
+  { value: 'driver' as UserRole, label: 'roles.driver', icon: 'heroicons:truck' },
+  { value: 'shipper' as UserRole, label: 'roles.shipper', icon: 'heroicons:cube' },
+  { value: 'broker' as UserRole, label: 'roles.broker', icon: 'heroicons:briefcase' },
 ]
 
 const selectRole = (role: UserRole) => {

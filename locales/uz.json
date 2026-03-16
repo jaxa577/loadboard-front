@@ -166,7 +166,8 @@
     "passwordMinLength": "Parol kamida 6 ta belgidan iborat bo'lishi kerak",
     "fillRouteFields": "Iltimos, marshrut maydonlarini to'ldiring",
     "fillCargoFields": "Iltimos, yuk maydonlarini to'ldiring",
-    "selectLoadingDate": "Iltimos, yuklash sanasini tanlang"
+    "selectLoadingDate": "Iltimos, yuklash sanasini tanlang",
+    "fillPrice": "Narxni kiriting yoki kelishuv sifatida belgilang"
   },
   "errors": {
     "general": "Xatolik yuz berdi",
@@ -184,7 +185,21 @@
     "users": "Foydalanuvchilar",
     "loads": "Yuklar",
     "stats": "Statistika",
-    "confirmDelete": "O'chirishga ishonchingiz komilmi?"
+    "confirmDelete": "O'chirishga ishonchingiz komilmi?",
+    "totalUsers": "Jami foydalanuvchilar",
+    "totalLoads": "Jami yuklar",
+    "activeLoads": "Faol yuklar",
+    "revenue": "Daromad",
+    "name": "Ism",
+    "phone": "Telefon",
+    "role": "Rol",
+    "status": "Holat",
+    "actions": "Harakatlar",
+    "verified": "Tasdiqlangan",
+    "notVerified": "Tasdiqlanmagan",
+    "block": "Bloklash",
+    "unblock": "Blokdan chiqarish",
+    "delete": "O'chirish"
   },
   "filter": {
     "searchPlaceholder": "Shahar, yuk turi yoki kalit so'zlar bo'yicha qidirish...",
@@ -198,7 +213,7 @@
   },
   "landing": {
     "hero": {
-      "title": "SNG LoadBoard",
+      "title": "LoadBoard",
       "subtitle": "MDHda yuk tashish platformasi",
       "description": "Yetkazib berish, brokerlik, xavfsiz bitimlar",
       "createAccount": "Akkaunt yaratish",
@@ -278,7 +293,7 @@
       "platform": "Platforma",
       "about": "Biz haqimizda",
       "legal": "Huquqiy ma'lumot",
-      "copyright": "© 2024 SNG LoadBoard. Barcha huquqlar himoyalangan.",
+      "copyright": "© 2024 LoadBoard. Barcha huquqlar himoyalangan.",
       "testAccounts": "Test akkauntlar"
     }
   }

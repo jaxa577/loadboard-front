@@ -25,7 +25,7 @@
 
 <script setup lang="ts">
 useHead({
-  title: 'Панель брокера - SNG LoadBoard',
+  title: 'Панель брокера - LoadBoard',
 })
 </script>
 

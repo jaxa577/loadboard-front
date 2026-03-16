@@ -260,7 +260,7 @@
   },
   "landing": {
     "hero": {
-      "title": "SNG LoadBoard",
+      "title": "LoadBoard",
       "subtitle": "Cargo transportation platform in CIS",
       "description": "Delivery, brokering, secure transactions",
       "createAccount": "Create Account",
@@ -340,7 +340,7 @@
       "platform": "Platform",
       "about": "About Us",
       "legal": "Legal Information",
-      "copyright": "© 2024 SNG LoadBoard. All rights reserved.",
+      "copyright": "© 2024 LoadBoard. All rights reserved.",
       "testAccounts": "Test accounts"
     }
   }

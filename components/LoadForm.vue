@@ -61,7 +61,7 @@
               class="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 rounded focus:ring-primary-500"
             />
             <label for="negotiablePrice" class="text-sm font-medium text-gray-900 dark:text-white">
-              Negotiable Price (Договорная цена)
+              {{ $t('load.negotiablePrice') }}
             </label>
           </div>
 
@@ -238,7 +238,7 @@ const handleSubmit = () => {
   }
 
   if (!formData.value.negotiablePrice && !formData.value.price) {
-    toast.warning('Please specify price or mark it as negotiable')
+    toast.warning(t('validation.fillPrice'))
     return
   }
 

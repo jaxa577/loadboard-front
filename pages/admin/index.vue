@@ -32,7 +32,7 @@ onMounted(async () => {
 })
 
 useHead({
-  title: 'Админ-панель - SNG LoadBoard',
+  title: 'Админ-панель - LoadBoard',
 })
 </script>
 

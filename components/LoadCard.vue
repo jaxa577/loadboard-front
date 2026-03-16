@@ -29,13 +29,13 @@
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
             </svg>
-            {{ load.weight }} кг
+            {{ load.weight }} {{ $t('common.kg') }}
           </span>
           <span v-if="load.volume" class="flex items-center gap-1">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
             </svg>
-            {{ load.volume }} м³
+            {{ load.volume }} {{ $t('common.m3') }}
           </span>
           <span class="truncate">{{ load.cargoType }}</span>
         </div>
@@ -58,7 +58,7 @@
       <!-- Right: Price -->
       <div class="flex-shrink-0 text-left sm:text-right">
         <div class="text-2xl sm:text-3xl font-bold text-primary-600 dark:text-primary-400 mb-1">
-          <span v-if="load.negotiablePrice">Negotiable</span>
+          <span v-if="load.negotiablePrice">{{ $t('load.negotiable') }}</span>
           <span v-else>{{ formatPrice(load.price, load.currency) }}</span>
         </div>
         <div class="text-sm text-gray-500 dark:text-gray-400">{{ getPaymentTypeLabel(load.paymentType) }}</div>
@@ -79,7 +79,7 @@
           </div>
           <div class="flex-shrink-0 text-right">
             <div class="text-lg sm:text-xl font-bold text-primary-600 dark:text-primary-400 whitespace-nowrap">
-              <span v-if="load.negotiablePrice">Negotiable</span>
+              <span v-if="load.negotiablePrice">{{ $t('load.negotiable') }}</span>
               <span v-else>{{ formatPrice(load.price, load.currency) }}</span>
             </div>
             <div class="text-xs text-gray-500 dark:text-gray-400">{{ getPaymentTypeLabel(load.paymentType) }}</div>
@@ -94,8 +94,8 @@
       </div>
 
       <div class="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-4">
-        <span>{{ load.weight }} кг</span>
-        <span v-if="load.volume">{{ load.volume }} м³</span>
+        <span>{{ load.weight }} {{ $t('common.kg') }}</span>
+        <span v-if="load.volume">{{ load.volume }} {{ $t('common.m3') }}</span>
         <span class="truncate">{{ load.cargoType }}</span>
       </div>
 

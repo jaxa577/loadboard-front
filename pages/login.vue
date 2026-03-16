@@ -51,7 +51,7 @@
             <p>• {{ $t('roles.driver') }}: driver1@example.com / password123</p>
             <p>• {{ $t('roles.broker') }}: broker1@example.com / password123</p>
             <p>• {{ $t('roles.shipper') }}: shipper1@example.com / password123</p>
-            <p>• {{ $t('roles.admin') }}: admin@sngloadboard.com / password123</p>
+            <p>• {{ $t('roles.admin') }}: admin@loadboard.com / password123</p>
           </div>
         </div>
       </template>
@@ -99,6 +99,6 @@ const onSubmit = async () => {
 const { t } = useI18n()
 
 useHead({
-  title: 'Вход - SNG LoadBoard',
+  title: 'Вход - LoadBoard',
 })
 </script>

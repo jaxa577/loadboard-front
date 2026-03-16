@@ -78,7 +78,7 @@ onMounted(async () => {
 })
 
 useHead({
-  title: 'История - SNG LoadBoard',
+  title: 'История - LoadBoard',
 })
 </script>
 

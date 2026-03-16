@@ -3,7 +3,7 @@
     <div class="container mx-auto px-4">
       <div class="flex items-center justify-between h-20">
         <NuxtLink to="/" class="flex items-center z-10">
-          <img src="~/assets/LB.svg" alt="SNG LoadBoard Logo" class="h-16 w-auto" />
+          <img src="~/assets/LB.svg" alt="LoadBoard Logo" class="h-16 w-auto" />
         </NuxtLink>
 
         <!-- Desktop Navigation & Auth & Lang -->

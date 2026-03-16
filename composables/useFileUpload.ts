@@ -41,7 +41,7 @@ export const useFileUpload = () => {
         }
 
         // Generate a mock URL (in production, this would be the actual MinIO URL)
-        const mockUrl = `https://storage.sngloadboard.com/${Date.now()}-${file.name}`
+        const mockUrl = `https://storage.loadboard.com/${Date.now()}-${file.name}`
         uploadedUrls.push(mockUrl)
       }
 

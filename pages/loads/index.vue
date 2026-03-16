@@ -167,6 +167,6 @@ watch(loadMoreTrigger, (newEl) => {
 })
 
 useHead({
-  title: 'Лента грузов - SNG LoadBoard',
+  title: 'Лента грузов - LoadBoard',
 })
 </script>

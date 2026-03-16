@@ -111,6 +111,6 @@ const remove = async (id: string) => {
   }
 }
 
-useHead({ title: 'Мои ТС - SNG LoadBoard' })
+useHead({ title: 'Мои ТС - LoadBoard' })
 </script>
 

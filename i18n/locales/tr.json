@@ -247,7 +247,7 @@
   },
   "landing": {
     "hero": {
-      "title": "SNG LoadBoard",
+      "title": "LoadBoard",
       "subtitle": "BDT'de yük taşıma platformu",
       "description": "Teslimat, brokerlik, güvenli anlaşmalar",
       "createAccount": "Hesap Oluştur",
@@ -327,7 +327,7 @@
       "platform": "Platform",
       "about": "Hakkımızda",
       "legal": "Yasal Bilgiler",
-      "copyright": "© 2024 SNG LoadBoard. Tüm hakları saklıdır.",
+      "copyright": "© 2024 LoadBoard. Tüm hakları saklıdır.",
       "testAccounts": "Test hesapları"
     }
   }

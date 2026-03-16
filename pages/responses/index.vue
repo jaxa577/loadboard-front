@@ -66,6 +66,6 @@ const approve = async (id: string) => {
   await responsesStore.approve(id)
 }
 
-useHead({ title: 'Мои отклики - SNG LoadBoard' })
+useHead({ title: 'Мои отклики - LoadBoard' })
 </script>
 

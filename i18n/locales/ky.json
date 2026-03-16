@@ -247,7 +247,7 @@
   },
   "landing": {
     "hero": {
-      "title": "SNG LoadBoard",
+      "title": "LoadBoard",
       "subtitle": "МДКда жүк ташуу платформасы",
       "description": "Жеткирүү, брокерлик, коопсуз келишимдер",
       "createAccount": "Аккаунт түзүү",
@@ -327,7 +327,7 @@
       "platform": "Платформа",
       "about": "Биз жөнүндө",
       "legal": "Укуктук маалымат",
-      "copyright": "© 2024 SNG LoadBoard. Бардык укуктар корголгон.",
+      "copyright": "© 2024 LoadBoard. Бардык укуктар корголгон.",
       "testAccounts": "Тест аккаунттары"
     }
   }

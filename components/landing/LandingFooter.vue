@@ -3,7 +3,7 @@
     <div class="container mx-auto px-4">
       <div class="grid md:grid-cols-4 gap-8 mb-12">
         <div>
-          <h3 class="text-2xl font-bold text-white mb-4">SNG LoadBoard</h3>
+          <h3 class="text-2xl font-bold text-white mb-4">LoadBoard</h3>
           <p class="text-gray-400">
             {{ $t('landing.hero.subtitle') }}
           </p>

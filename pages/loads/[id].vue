@@ -230,7 +230,7 @@ onMounted(async () => {
 })
 
 useHead({
-  title: 'Груз - SNG LoadBoard',
+  title: 'Груз - LoadBoard',
 })
 </script>
 

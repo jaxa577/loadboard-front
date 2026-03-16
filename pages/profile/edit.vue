@@ -96,7 +96,7 @@ const handleSubmit = async () => {
 }
 
 useHead({
-  title: 'Редактировать профиль - SNG LoadBoard',
+  title: 'Редактировать профиль - LoadBoard',
 })
 </script>
 

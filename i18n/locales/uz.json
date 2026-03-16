@@ -247,7 +247,7 @@
   },
   "landing": {
     "hero": {
-      "title": "SNG LoadBoard",
+      "title": "LoadBoard",
       "subtitle": "MDHda yuk tashish platformasi",
       "description": "Yetkazib berish, brokerlik, xavfsiz bitimlar",
       "createAccount": "Akkaunt yaratish",
@@ -327,7 +327,7 @@
       "platform": "Platforma",
       "about": "Biz haqimizda",
       "legal": "Huquqiy ma'lumot",
-      "copyright": "© 2024 SNG LoadBoard. Barcha huquqlar himoyalangan.",
+      "copyright": "© 2024 LoadBoard. Barcha huquqlar himoyalangan.",
       "testAccounts": "Test akkauntlar"
     }
   }

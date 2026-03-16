@@ -37,7 +37,7 @@ onUnmounted(() => {
 })
 
 useHead({
-  title: 'Чаты - SNG LoadBoard',
+  title: 'Чаты - LoadBoard',
 })
 </script>
 

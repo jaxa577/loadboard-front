@@ -262,7 +262,7 @@
   "landing": {
     "test": "TTest",
     "hero": {
-      "title": "SNG LoadBoard",
+      "title": "LoadBoard",
       "subtitle": "Платформа для грузоперевозок в СНГ",
       "description": "Доставка, брокеринг, безопасные сделки",
       "createAccount": "Создать аккаунт",
@@ -342,7 +342,7 @@
       "platform": "Платформа",
       "about": "О нас",
       "legal": "Правовая информация",
-      "copyright": "© 2024 SNG LoadBoard. Все права защищены.",
+      "copyright": "© 2024 LoadBoard. Все права защищены.",
       "testAccounts": "Тестовые аккаунты"
     }
   }

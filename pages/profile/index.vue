@@ -60,7 +60,7 @@ onMounted(async () => {
 })
 
 useHead({
-  title: 'Профиль - SNG LoadBoard',
+  title: 'Профиль - LoadBoard',
 })
 </script>
 

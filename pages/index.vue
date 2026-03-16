@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
 useHead({
-  title: 'SNG LoadBoard - Платформа для грузоперевозок в СНГ',
+  title: 'LoadBoard - Платформа для грузоперевозок в СНГ',
 })
 </script>
 

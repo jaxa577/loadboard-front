@@ -138,6 +138,6 @@ const onSubmit = async () => {
 }
 
 useHead({
-  title: 'Регистрация - SNG LoadBoard',
+  title: 'Регистрация - LoadBoard',
 })
 </script>

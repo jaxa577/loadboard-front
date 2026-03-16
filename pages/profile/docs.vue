@@ -22,7 +22,7 @@
 
 <script setup lang="ts">
 useHead({
-  title: 'Документы - SNG LoadBoard',
+  title: 'Документы - LoadBoard',
 })
 </script>
 

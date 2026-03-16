@@ -286,6 +286,6 @@ onMounted(() => {
 })
 
 useHead({
-  title: 'Заявки - SNG LoadBoard',
+  title: 'Заявки - LoadBoard',
 })
 </script>

@@ -162,7 +162,7 @@ const statusColor = (status: string | null) => {
 }
 
 useHead({
-  title: 'Верификация - SNG LoadBoard',
+  title: 'Верификация - LoadBoard',
 })
 </script>
 

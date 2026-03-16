@@ -5,7 +5,12 @@
         {{ isEdit ? $t('load.editLoad') : $t('nav.createLoad') }}
       </h1>
 
-      <LoadForm :load="load" @submit="handleSubmit" />
+      <template v-if="!isEdit || load">
+        <LoadForm :load="load" @submit="handleSubmit" />
+      </template>
+      <div v-else class="flex justify-center items-center py-20">
+        <UIcon name="i-heroicons-arrow-path" class="w-8 h-8 animate-spin text-primary-500" />
+      </div>
     </div>
   </NuxtLayout>
 </template>
@@ -50,7 +55,7 @@ const handleSubmit = async (loadData: Partial<Load>) => {
 }
 
 useHead({
-  title: isEdit.value ? 'Редактировать груз - SNG LoadBoard' : 'Создать груз - SNG LoadBoard',
+  title: isEdit.value ? 'Редактировать груз - LoadBoard' : 'Создать груз - LoadBoard',
 })
 </script>
 
