@@ -1,11 +1,10 @@
+import { useToast } from 'vue-toastification'
+
 export const useToastNotification = () => {
-  // Dynamically import useToast to ensure it's only used on client side
   let toast: any = null
 
   if (process.client) {
     try {
-      // Import the useToast function from vue-toastification
-      const { useToast } = require('vue-toastification')
       toast = useToast()
     } catch (e) {
       console.error('Failed to initialize toast:', e)

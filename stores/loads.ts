@@ -225,12 +225,21 @@ export const useLoadsStore = defineStore('loads', {
           throw new Error('Not authenticated')
         }
 
+        const cleanedData = { ...loadData }
+        delete cleanedData.negotiablePrice
+        delete cleanedData.currency
+        delete cleanedData.prepayment
+        delete cleanedData.prepaymentCurrency
+        delete cleanedData.trucksCount
+        delete cleanedData.priority
+        delete cleanedData.contactPhone
+        
         const load = await $fetch<Load>(`${apiBase}/loads/${id}`, {
           method: 'PATCH',
           headers: {
             Authorization: `Bearer ${token}`,
           },
-          body: loadData,
+          body: cleanedData,
         })
 
         const index = this.loads.findIndex((l: any) => l.id === id)
