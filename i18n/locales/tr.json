@@ -26,7 +26,8 @@
     "messages": "Mesajlar",
     "profile": "Profil",
     "admin": "Yönetici Paneli",
-    "logout": "Çıkış"
+    "logout": "Çıkış",
+    "tracking": "Takip"
   },
   "auth": {
     "login": "Giriş",
@@ -330,5 +331,21 @@
       "copyright": "© 2024 LoadBoard. Tüm hakları saklıdır.",
       "testAccounts": "Test hesapları"
     }
+  },
+  "tracking": {
+    "title": "Takip",
+    "description": "Aktif teslimatları gerçek zamanlı olarak takip edin",
+    "noActiveJourneys": "Şu anda aktif yolculuk yok",
+    "active": "Aktif",
+    "started": "Başladı",
+    "selectJourney": "Haritada görmek için bir yolculuk seçin",
+    "noCoordinates": "Koordinat yok",
+    "noCoordinatesDesc": "Bu yükün kalkış/varış koordinatları yok.",
+    "coordinatesRequired": "Rotayı haritada göstermek için koordinatlar gereklidir.",
+    "origin": "Kalkış",
+    "destination": "Varış",
+    "currentLocation": "Mevcut Konum",
+    "live": "Çevrimiçi",
+    "offline": "Çevrimdışı"
   }
 }

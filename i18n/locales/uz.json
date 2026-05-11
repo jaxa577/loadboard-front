@@ -26,7 +26,8 @@
     "messages": "Xabarlar",
     "profile": "Profil",
     "admin": "Admin panel",
-    "logout": "Chiqish"
+    "logout": "Chiqish",
+    "tracking": "Kuzatuv"
   },
   "auth": {
     "login": "Kirish",
@@ -330,5 +331,21 @@
       "copyright": "© 2024 LoadBoard. Barcha huquqlar himoyalangan.",
       "testAccounts": "Test akkauntlar"
     }
+  },
+  "tracking": {
+    "title": "Kuzatuv",
+    "description": "Yuklaringizni real vaqt rejimida kuzatib boring",
+    "noActiveJourneys": "Faol qatnovlar yo'q",
+    "active": "Faol",
+    "started": "Boshlangan",
+    "selectJourney": "Xaritada ko'rish uchun qatnovni tanlang",
+    "noCoordinates": "Koordinatalar mavjud emas",
+    "noCoordinatesDesc": "Ushbu yukda jo'natish/yetkazish koordinatalari yo'q.",
+    "coordinatesRequired": "Marshrutni xaritada ko'rsatish uchun koordinatalar talab qilinadi.",
+    "origin": "Jo'natish punkti",
+    "destination": "Yetkazish punkti",
+    "currentLocation": "Joriy joylashuv",
+    "live": "Onlayn",
+    "offline": "Oflayn"
   }
 }

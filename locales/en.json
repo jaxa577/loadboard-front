@@ -167,7 +167,15 @@
     "noActiveJourneys": "No active journeys at the moment",
     "active": "Active",
     "started": "Started",
-    "selectJourney": "Select a journey to view on map"
+    "selectJourney": "Select a journey to view on map",
+    "noCoordinates": "No coordinates available",
+    "noCoordinatesDesc": "This load doesn't have origin/destination coordinates.",
+    "coordinatesRequired": "Coordinates are required to display the route on map.",
+    "origin": "Origin",
+    "destination": "Destination",
+    "currentLocation": "Current Location",
+    "live": "Live",
+    "offline": "Offline"
   },
   "validation": {
     "required": "Please fill all required fields",

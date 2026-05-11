@@ -3,7 +3,7 @@
     <AppHeader />
     <UContainer class="py-6">
       <div class="grid lg:grid-cols-[260px_1fr] gap-6">
-        <aside class="hidden lg:block">
+        <aside class="hidden lg:block sticky top-[88px] self-start max-h-[calc(100vh-7rem)] overflow-y-auto">
           <UCard>
             <template #header>
               <div class="flex items-center space-x-3">
