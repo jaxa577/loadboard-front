@@ -30,8 +30,8 @@
         <div>
           <h4 class="text-white font-semibold mb-4">{{ $t('landing.footer.legal') }}</h4>
           <ul class="space-y-2">
-            <li><a href="#" class="hover:text-white transition-colors">Политика конфиденциальности</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">Условия использования</a></li>
+            <li><NuxtLink to="/privacy" class="hover:text-white transition-colors">Политика конфиденциальности</NuxtLink></li>
+            <li><NuxtLink to="/terms" class="hover:text-white transition-colors">Условия использования</NuxtLink></li>
             <li><a href="#" class="hover:text-white transition-colors">Правила платформы</a></li>
           </ul>
         </div>
